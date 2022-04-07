@@ -1,0 +1,93 @@
+[0m[[0m[0mdebug[0m] [0m[0mPackaging D:\Documents\Cours\ESIEE\E4\Semestre 2\Data engineering\microservice\target\scala-2.13\microservice_2.13-0.1.jar ...[0m
+[0m[[0m[0mdebug[0m] [0m[0mInput file mappings:[0m
+[0m[[0m[0mdebug[0m] [0m[0m	io[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  D:\Documents\Cours\ESIEE\E4\Semestre 2\Data engineering\microservice\target\scala-2.13\classes\io[0m
+[0m[[0m[0mdebug[0m] [0m[0m	io\univalence[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  D:\Documents\Cours\ESIEE\E4\Semestre 2\Data engineering\microservice\target\scala-2.13\classes\io\univalence[0m
+[0m[[0m[0mdebug[0m] [0m[0m	io\univalence\microservice[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  D:\Documents\Cours\ESIEE\E4\Semestre 2\Data engineering\microservice\target\scala-2.13\classes\io\univalence\microservice[0m
+[0m[[0m[0mdebug[0m] [0m[0m	io\univalence\microservice\api[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  D:\Documents\Cours\ESIEE\E4\Semestre 2\Data engineering\microservice\target\scala-2.13\classes\io\univalence\microservice\api[0m
+[0m[[0m[0mdebug[0m] [0m[0m	io\univalence\microservice\api\ApiMain$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  D:\Documents\Cours\ESIEE\E4\Semestre 2\Data engineering\microservice\target\scala-2.13\classes\io\univalence\microservice\api\ApiMain$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	io\univalence\microservice\api\ApiMain.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  D:\Documents\Cours\ESIEE\E4\Semestre 2\Data engineering\microservice\target\scala-2.13\classes\io\univalence\microservice\api\ApiMain.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	io\univalence\microservice\common[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  D:\Documents\Cours\ESIEE\E4\Semestre 2\Data engineering\microservice\target\scala-2.13\classes\io\univalence\microservice\common[0m
+[0m[[0m[0mdebug[0m] [0m[0m	io\univalence\microservice\common\CassandraProjectedStockRepository.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  D:\Documents\Cours\ESIEE\E4\Semestre 2\Data engineering\microservice\target\scala-2.13\classes\io\univalence\microservice\common\CassandraProjectedStockRepository.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	io\univalence\microservice\common\Configuration$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  D:\Documents\Cours\ESIEE\E4\Semestre 2\Data engineering\microservice\target\scala-2.13\classes\io\univalence\microservice\common\Configuration$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	io\univalence\microservice\common\Configuration$StockTableFields$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  D:\Documents\Cours\ESIEE\E4\Semestre 2\Data engineering\microservice\target\scala-2.13\classes\io\univalence\microservice\common\Configuration$StockTableFields$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	io\univalence\microservice\common\Configuration.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  D:\Documents\Cours\ESIEE\E4\Semestre 2\Data engineering\microservice\target\scala-2.13\classes\io\univalence\microservice\common\Configuration.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	io\univalence\microservice\common\DeltaStock$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  D:\Documents\Cours\ESIEE\E4\Semestre 2\Data engineering\microservice\target\scala-2.13\classes\io\univalence\microservice\common\DeltaStock$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	io\univalence\microservice\common\DeltaStock.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  D:\Documents\Cours\ESIEE\E4\Semestre 2\Data engineering\microservice\target\scala-2.13\classes\io\univalence\microservice\common\DeltaStock.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	io\univalence\microservice\common\DeltaStockJson$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  D:\Documents\Cours\ESIEE\E4\Semestre 2\Data engineering\microservice\target\scala-2.13\classes\io\univalence\microservice\common\DeltaStockJson$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	io\univalence\microservice\common\DeltaStockJson.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  D:\Documents\Cours\ESIEE\E4\Semestre 2\Data engineering\microservice\target\scala-2.13\classes\io\univalence\microservice\common\DeltaStockJson.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	io\univalence\microservice\common\DummyProjectedStockRepository.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  D:\Documents\Cours\ESIEE\E4\Semestre 2\Data engineering\microservice\target\scala-2.13\classes\io\univalence\microservice\common\DummyProjectedStockRepository.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	io\univalence\microservice\common\ProjectedStock$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  D:\Documents\Cours\ESIEE\E4\Semestre 2\Data engineering\microservice\target\scala-2.13\classes\io\univalence\microservice\common\ProjectedStock$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	io\univalence\microservice\common\ProjectedStock.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  D:\Documents\Cours\ESIEE\E4\Semestre 2\Data engineering\microservice\target\scala-2.13\classes\io\univalence\microservice\common\ProjectedStock.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	io\univalence\microservice\common\ProjectedStockJson$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  D:\Documents\Cours\ESIEE\E4\Semestre 2\Data engineering\microservice\target\scala-2.13\classes\io\univalence\microservice\common\ProjectedStockJson$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	io\univalence\microservice\common\ProjectedStockJson.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  D:\Documents\Cours\ESIEE\E4\Semestre 2\Data engineering\microservice\target\scala-2.13\classes\io\univalence\microservice\common\ProjectedStockJson.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	io\univalence\microservice\common\ProjectedStockRepository.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  D:\Documents\Cours\ESIEE\E4\Semestre 2\Data engineering\microservice\target\scala-2.13\classes\io\univalence\microservice\common\ProjectedStockRepository.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	io\univalence\microservice\common\Stock$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  D:\Documents\Cours\ESIEE\E4\Semestre 2\Data engineering\microservice\target\scala-2.13\classes\io\univalence\microservice\common\Stock$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	io\univalence\microservice\common\Stock.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  D:\Documents\Cours\ESIEE\E4\Semestre 2\Data engineering\microservice\target\scala-2.13\classes\io\univalence\microservice\common\Stock.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	io\univalence\microservice\common\StockInfo$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  D:\Documents\Cours\ESIEE\E4\Semestre 2\Data engineering\microservice\target\scala-2.13\classes\io\univalence\microservice\common\StockInfo$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	io\univalence\microservice\common\StockInfo.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  D:\Documents\Cours\ESIEE\E4\Semestre 2\Data engineering\microservice\target\scala-2.13\classes\io\univalence\microservice\common\StockInfo.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	io\univalence\microservice\common\StockInfoJson$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  D:\Documents\Cours\ESIEE\E4\Semestre 2\Data engineering\microservice\target\scala-2.13\classes\io\univalence\microservice\common\StockInfoJson$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	io\univalence\microservice\common\StockInfoJson.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  D:\Documents\Cours\ESIEE\E4\Semestre 2\Data engineering\microservice\target\scala-2.13\classes\io\univalence\microservice\common\StockInfoJson.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	io\univalence\microservice\common\StockJson$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  D:\Documents\Cours\ESIEE\E4\Semestre 2\Data engineering\microservice\target\scala-2.13\classes\io\univalence\microservice\common\StockJson$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	io\univalence\microservice\common\StockJson.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  D:\Documents\Cours\ESIEE\E4\Semestre 2\Data engineering\microservice\target\scala-2.13\classes\io\univalence\microservice\common\StockJson.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	io\univalence\microservice\demo[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  D:\Documents\Cours\ESIEE\E4\Semestre 2\Data engineering\microservice\target\scala-2.13\classes\io\univalence\microservice\demo[0m
+[0m[[0m[0mdebug[0m] [0m[0m	io\univalence\microservice\demo\CleanMain$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  D:\Documents\Cours\ESIEE\E4\Semestre 2\Data engineering\microservice\target\scala-2.13\classes\io\univalence\microservice\demo\CleanMain$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	io\univalence\microservice\demo\CleanMain.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  D:\Documents\Cours\ESIEE\E4\Semestre 2\Data engineering\microservice\target\scala-2.13\classes\io\univalence\microservice\demo\CleanMain.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	io\univalence\microservice\demo\InitMain$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  D:\Documents\Cours\ESIEE\E4\Semestre 2\Data engineering\microservice\target\scala-2.13\classes\io\univalence\microservice\demo\InitMain$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	io\univalence\microservice\demo\InitMain.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  D:\Documents\Cours\ESIEE\E4\Semestre 2\Data engineering\microservice\target\scala-2.13\classes\io\univalence\microservice\demo\InitMain.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	io\univalence\microservice\demo\InjectorMain$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  D:\Documents\Cours\ESIEE\E4\Semestre 2\Data engineering\microservice\target\scala-2.13\classes\io\univalence\microservice\demo\InjectorMain$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	io\univalence\microservice\demo\InjectorMain.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  D:\Documents\Cours\ESIEE\E4\Semestre 2\Data engineering\microservice\target\scala-2.13\classes\io\univalence\microservice\demo\InjectorMain.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	io\univalence\microservice\demo\ReaderMain$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  D:\Documents\Cours\ESIEE\E4\Semestre 2\Data engineering\microservice\target\scala-2.13\classes\io\univalence\microservice\demo\ReaderMain$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	io\univalence\microservice\demo\ReaderMain.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  D:\Documents\Cours\ESIEE\E4\Semestre 2\Data engineering\microservice\target\scala-2.13\classes\io\univalence\microservice\demo\ReaderMain.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	io\univalence\microservice\ingest[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  D:\Documents\Cours\ESIEE\E4\Semestre 2\Data engineering\microservice\target\scala-2.13\classes\io\univalence\microservice\ingest[0m
+[0m[[0m[0mdebug[0m] [0m[0m	io\univalence\microservice\ingest\IngestMain$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  D:\Documents\Cours\ESIEE\E4\Semestre 2\Data engineering\microservice\target\scala-2.13\classes\io\univalence\microservice\ingest\IngestMain$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	io\univalence\microservice\ingest\IngestMain.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  D:\Documents\Cours\ESIEE\E4\Semestre 2\Data engineering\microservice\target\scala-2.13\classes\io\univalence\microservice\ingest\IngestMain.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	io\univalence\microservice\process[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  D:\Documents\Cours\ESIEE\E4\Semestre 2\Data engineering\microservice\target\scala-2.13\classes\io\univalence\microservice\process[0m
+[0m[[0m[0mdebug[0m] [0m[0m	io\univalence\microservice\process\ProcessMain$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  D:\Documents\Cours\ESIEE\E4\Semestre 2\Data engineering\microservice\target\scala-2.13\classes\io\univalence\microservice\process\ProcessMain$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	io\univalence\microservice\process\ProcessMain.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  D:\Documents\Cours\ESIEE\E4\Semestre 2\Data engineering\microservice\target\scala-2.13\classes\io\univalence\microservice\process\ProcessMain.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	logback.xml[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  D:\Documents\Cours\ESIEE\E4\Semestre 2\Data engineering\microservice\target\scala-2.13\classes\logback.xml[0m
+[0m[[0m[0mdebug[0m] [0m[0mDone packaging.[0m

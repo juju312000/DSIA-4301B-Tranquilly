@@ -1,0 +1,41 @@
+[0m[[0m[0mdebug[0m] [0m[0mCreated transactional ClassFileManager with tempDir = D:\Documents\Cours\ESIEE\E4\Semestre 2\Data engineering\microservice\target\scala-2.13\classes.bak[0m
+[0m[[0m[0mdebug[0m] [0m[0mAbout to delete class files:[0m
+[0m[[0m[0mdebug[0m] [0m[0mWe backup class files:[0m
+[0m[[0m[0mdebug[0m] [0m[0mRegistering generated classes:[0m
+[0m[[0m[0mdebug[0m] [0m[0m	Configuration$StockTableFields$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	Configuration$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	CleanMain.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	DeltaStockJson$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	ProcessMain.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	StockInfo.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	StockJson$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	ProjectedStockJson$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	StockInfoJson.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	StockJson.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	ApiMain.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	ApiMain$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	Stock.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	ProjectedStock$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	ProcessMain$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	DeltaStock$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	CleanMain$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	DeltaStock.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	IngestMain.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	Configuration.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	InjectorMain.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	DummyProjectedStockRepository.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	StockInfoJson$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	InitMain.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	InitMain$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	ReaderMain$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	Stock$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	StockInfo$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	IngestMain$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	ProjectedStockRepository.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	ReaderMain.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	CassandraProjectedStockRepository.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	ProjectedStock.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	DeltaStockJson.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	InjectorMain$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	ProjectedStockJson.class[0m
+[0m[[0m[0mdebug[0m] [0m[0mRemoving the temporary directory used for backing up class files: D:\Documents\Cours\ESIEE\E4\Semestre 2\Data engineering\microservice\target\scala-2.13\classes.bak[0m

@@ -1,0 +1,35 @@
+[debug] > Exec(run, None, None)
+[debug] Evaluating tasks: Compile / run
+[debug] Running task... Cancel: Signal, check cycles: false, forcegc: true
+[debug] Forcing garbage collection...
+[error] com.datastax.oss.driver.api.core.AllNodesFailedException: Could not reach any contact point, make sure you've provided valid addresses (showing first 1 nodes, use getAllErrors() for more): Node(endPoint=/127.0.0.1:9042, hostId=null, hashCode=56e7aa43): [com.datastax.oss.driver.api.core.connection.ConnectionInitException: [s0|control|id: 0x52e4b2f9, L:/127.0.0.1:51983 - R:/127.0.0.1:9042] Protocol initialization request, step 1 (OPTIONS): unexpected failure (com.datastax.oss.driver.api.core.connection.ClosedConnectionException: Lost connection to remote peer)]
+[error] 	at com.datastax.oss.driver.api.core.AllNodesFailedException.copy(AllNodesFailedException.java:141)
+[error] 	at com.datastax.oss.driver.internal.core.util.concurrent.CompletableFutures.getUninterruptibly(CompletableFutures.java:149)
+[error] 	at com.datastax.oss.driver.api.core.session.SessionBuilder.build(SessionBuilder.java:835)
+[error] 	at io.univalence.microservice.demo.InitMain$.$anonfun$main$1(InitMain.scala:23)
+[error] 	at scala.util.Using$.$anonfun$apply$1(Using.scala:113)
+[error] 	at scala.util.Using$.apply(Using.scala:113)
+[error] 	at io.univalence.microservice.demo.InitMain$.main(InitMain.scala:23)
+[error] 	at io.univalence.microservice.demo.InitMain.main(InitMain.scala)
+[error] 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+[error] 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+[error] 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+[error] 	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+[error] 	at sbt.Run.invokeMain(Run.scala:143)
+[error] 	at sbt.Run.execute$1(Run.scala:93)
+[error] 	at sbt.Run.$anonfun$runWithLoader$5(Run.scala:120)
+[error] 	at sbt.Run$.executeSuccess(Run.scala:186)
+[error] 	at sbt.Run.runWithLoader(Run.scala:120)
+[error] 	at sbt.Defaults$.$anonfun$bgRunTask$6(Defaults.scala:1983)
+[error] 	at sbt.Defaults$.$anonfun$termWrapper$2(Defaults.scala:1922)
+[error] 	at scala.runtime.java8.JFunction0$mcV$sp.apply(JFunction0$mcV$sp.java:23)
+[error] 	at scala.util.Try$.apply(Try.scala:213)
+[error] 	at sbt.internal.BackgroundThreadPool$BackgroundRunnable.run(DefaultBackgroundJobService.scala:369)
+[error] 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+[error] 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+[error] 	at java.base/java.lang.Thread.run(Thread.java:834)
+[error] (Compile / run) com.datastax.oss.driver.api.core.AllNodesFailedException: Could not reach any contact point, make sure you've provided valid addresses (showing first 1 nodes, use getAllErrors() for more): Node(endPoint=/127.0.0.1:9042, hostId=null, hashCode=56e7aa43): [com.datastax.oss.driver.api.core.connection.ConnectionInitException: [s0|control|id: 0x52e4b2f9, L:/127.0.0.1:51983 - R:/127.0.0.1:9042] Protocol initialization request, step 1 (OPTIONS): unexpected failure (com.datastax.oss.driver.api.core.connection.ClosedConnectionException: Lost connection to remote peer)]
+[error] Total time: 21 s, completed 30 mars 2022 à 09:34:46
+[debug] > Exec(idea-shell, None, None)
+[debug] > Exec(, None, None)
+[debug] > Exec(idea-shell, None, None)

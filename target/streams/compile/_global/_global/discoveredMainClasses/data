@@ -1,0 +1,1 @@
+["io.univalence.microservice.api.ApiMain","io.univalence.microservice.demo.CleanMain","io.univalence.microservice.demo.InitMain","io.univalence.microservice.demo.InjectorMain","io.univalence.microservice.demo.ReaderMain","io.univalence.microservice.ingest.IngestMain","io.univalence.microservice.process.ProcessMain"]
