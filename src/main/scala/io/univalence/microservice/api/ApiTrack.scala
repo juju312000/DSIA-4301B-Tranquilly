@@ -5,7 +5,7 @@ import io.univalence.microservice.common._
 import spark.Spark._
 import spark.{Request, Response}
 
-object ApiMainHistoryMessage {
+object ApiTrack {
 
   import scala.jdk.CollectionConverters._
 
@@ -21,24 +21,21 @@ object ApiMainHistoryMessage {
     val messageRepository: MessageRepository = new CassandraMessageRepository(session)
     val personneRepository: PersonneRepository = new CassandraPersonneRepository(session)
 
-    // à modifier
     get(
-      "/api/history/message",
+      "/api/track:id",
       (request: Request, response: Response) => {
-        println(s"--> Requested to find message")
-        val start = request.params("start")
-        val stop = request.params("stop")
-        val count = request.params("count")
+        println(s"--> Requested to find alert")
+        val id : Long = request.params("id").toLong
 
         // Récupère le token
         //val token : request.headers("Authorization")// à modifier si non fonctionnel
         //personneRepository.findFromToken()
 
         // Récupère ids des enfants
-        //val personne = personneRepository.findFromToken(token)
+        //val personne =personneRepository.findFromToken(token)
         //val enfants = personne.family_list
 
-        val stocks: List[AlertGet] = messageRepository.findAllMessagesByIdsFamily(start,stop,count,idsEnfants).toList
+        val stocks: List[AlertPost] = alertRepository.findLastPosition(id).toList
         val doc                          = AlertGetJson.gson.toJson(stocks.asJava)
 
         response.`type`("application/json")

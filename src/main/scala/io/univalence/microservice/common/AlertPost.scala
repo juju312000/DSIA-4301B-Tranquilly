@@ -2,7 +2,7 @@ package io.univalence.microservice.common
 
 import com.google.gson.Gson
 
-case class AlertPost(idEnfant: String, timestamp: Long, reason: String,user_name : String, coordinates : Array)
+case class AlertPost(idEnfant: String, timestamp: Long, reason: String,user_name : String, coordinates : List[Long])
 object AlertPostJson {
   val gson = new Gson()
 
