@@ -31,9 +31,13 @@ object ApiMain {
         val token : request.headers("Authorization")// à modifier si non fonctionnel 
 
         // Récupère ids des enfants
-        val idsEnfants = Array
+        val idsEnfants = Long
 
+<<<<<<< Updated upstream
         val stocks: List[AlertGet] = AlertRepository.findHistory(start,end,count,idsEnfants).toList
+=======
+        val stocks: List[AlertGet] = alertRepository.findHistory(start,stop,count,idsEnfants).toList
+>>>>>>> Stashed changes
         val doc                          = AlertGetJson.gson.toJson(stocks.asJava)
 
         response.`type`("application/json")
@@ -71,45 +75,27 @@ object ApiMain {
 
 
     get(
-      "/api/track",
+      "/api/track:user_id",
       (request: Request, response: Response) => {
         println(s"--> Requested to find alert")
-        val start = request.params("start")
-        val stop = request.params("stop")
-        val count = request.params("count")
+        val user_id : Long = request.params("user_id").toLong
 
         // Récupère le token
+        //Find tolen
 
+<<<<<<< Updated upstream
         // Récupère ids des enfants
         val idsEnfants = Array
 
         val stocks: List[AlertGet] = alertRepository.findLastPosition(start,end,count,idsEnfants).toList
+=======
+        val stocks: List[AlertGet] = alertRepository.findLastPosition(user_id).toList
+>>>>>>> Stashed changes
         val doc                          = AlertGetJson.gson.toJson(stocks.asJava)
 
         response.`type`("application/json")
         doc
-      }
-    )
 
-    get(
-      "/api/stocks/:id",
-      (request: Request, response: Response) => {
-        val id = request.params("id")
-        println(s"--> Requested to find stock of #$id")
-        val stock: Option[ProjectedStock] = repository.findById(id)
-
-        if (stock.isEmpty) {
-          println(s"product#$id not found")
-          response.status(404)
-
-          s"Product#$id Not Found"
-        } else {
-          println(s"product#$id: $stock")
-          val doc = ProjectedStockJson.serialize(stock.get)
-
-          response.`type`("application/json")
-          doc
-        }
       }
     )
 

@@ -53,7 +53,7 @@ object InitMain {
             |  idAlert TEXT,
             |  timestamp BIGINT,
             |  reason TEXT,
-            |  idPersonne TEXT,
+            |  idEnfant TEXT,
             |  user_name TEXT,
             |  coordinates LIST,
             |

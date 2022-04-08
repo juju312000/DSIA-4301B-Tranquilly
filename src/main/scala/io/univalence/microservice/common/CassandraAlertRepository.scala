@@ -14,9 +14,9 @@ class CassandraAlertRepository(session: CqlSession)
   // Pas sur du type Array
   // Prend les ids des enfant, les dates limites et le nombre maximum à récupérer
   // Appel depuis history/alert
-  override def findHistory(start: Long, end: Long, count: Long, idsEnfants: Array): Iterator[Alert] = {
+  override def findHistory(start: Long, end: Long, count: Long, idsEnfants: Long): Iterator[Alert] = {
     val statement =
-      session.prepare("SELECT * FROM tranquily.alert WHERE reason in ('ZONEOUT','REDBUTTON','PHONEOFF') AND timestamp BETWEEN(?,?) AND idEnfant in ? LIMIT ?")
+      session.prepare("SELECT * FROM tranquilly.alert WHERE reason in ('ZONEOUT','REDBUTTON','PHONEOFF') AND timestamp BETWEEN(?,?) AND idEnfant in ? LIMIT ?")
     val result: List[Row] =
       session.execute(statement.bind(start,end,idsEnfants,count)).all().asScala.toList
 
@@ -28,18 +28,14 @@ class CassandraAlertRepository(session: CqlSession)
           timestamp = result.getLong("timestamp"),
           user_name = result.getInt("user_name"),
           coordinates = result.getInt("coordinates")
-          // Comment ajouter server_timestamp ? Qu'est-ce ?
-
-          
         )
       )
       .iterator
   }
 
-
   override def save(alert: AlertPost): Unit = {
     val statement =
-      session.prepare("INSERT INTO tranquily.alert(idEnfant, timestamp, reason,user_name,coordinates) VALUES (?, ?, ?, ?, ?)")
+      session.prepare("INSERT INTO tranquilly.alert(idEnfant, timestamp, reason,user_name,coordinates) VALUES (?, ?, ?, ?, ?)")
     session.execute(
       statement.bind(
         alert.idEnfant,
@@ -47,14 +43,14 @@ class CassandraAlertRepository(session: CqlSession)
         alert.reason,
         alert.user_name,
         alert.coordinates
-    )
+      ))
   }
 
 // Pas sûr du type Array
   // Appel depuis TRACK API
-  override def findPosition(idEnfant: Array): Iterator[AlertGet] = {
+  override def findPosition(idEnfant: Long): Iterator[AlertGet] = {
     val statement =
-      session.prepare("SELECT * FROM tranquily.alert WHERE reason = 'TRACKING' AND idEnfant == ? ORDER BY timestamp DESC LIMIT 1")
+      session.prepare("SELECT * FROM tranquilly.alert WHERE reason = 'TRACKING' AND idEnfant == ? ORDER BY timestamp DESC LIMIT 1")
       // Permet de récupérer la dernière position d'un enfant
     val result: List[Row] =
       session.execute(statement.bind(idEnfant)).all().asScala.toList
@@ -72,10 +68,9 @@ class CassandraAlertRepository(session: CqlSession)
       .iterator
   }
 
-
   override def saveAll(alert: List[AlertPost]): Unit = {
     val statement =
-      session.prepare("SELECT * FROM tranquily.alert WHERE reason in ('ZONEOUT','REDBUTTON','PHONEOFF') AND timestamp BETWEEN(?,?) AND idEnfant in ? LIMIT ?")
+      session.prepare("INSERT INTO tranquily.alert(idEnfant, timestamp, reason,user_name,coordinates) VALUES (?, ?, ?, ?, ?)")
 
     val batch =
       BatchStatement
@@ -92,9 +87,6 @@ class CassandraAlertRepository(session: CqlSession)
                 ))
             .asJava
         )
-
     session.execute(batch)
   }
-
-
 }

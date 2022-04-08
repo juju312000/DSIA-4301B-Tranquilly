@@ -14,6 +14,11 @@ class CassandraMessageRepository(session: CqlSession)
   // Pas sur du type Array
   // Prend les ids des enfants, les dates limites et le nombre maximum à récupérer
   // Appel depuis history/Message
+<<<<<<< Updated upstream
+=======
+
+  // HISTORY API
+>>>>>>> Stashed changes
   override def findAllByIdsFamily(start: Long, end: Long, count: Long, idsFamily: Array): Iterator[Message] = {
     val statement =
       session.prepare("SELECT * FROM tranquily.message WHERE timestamp BETWEEN(?,?) AND idPersonne in ? LIMIT ?")
@@ -34,10 +39,14 @@ class CassandraMessageRepository(session: CqlSession)
       .iterator
   }
 
-
+  // MESSAGE API
   override def save(messageVar: Message): Unit = {
     val statement =
+<<<<<<< Updated upstream
       session.prepare("INSERT INTO tranquily.message(idPersonne, timestamp, message,user_name,coordinates) VALUES (?, ?, ?)")
+=======
+      session.prepare("INSERT INTO tranquilly.message(idPersonne, timestamp, message,user_name,coordinates) VALUES (?, ?, ?, ?, ?)")
+>>>>>>> Stashed changes
     session.execute(
       statement.bind(
         messageVar.idPersonne,
@@ -45,7 +54,36 @@ class CassandraMessageRepository(session: CqlSession)
         messageVar.message,
         messageVar.user_name,
         messageVar.coordinates
-    )
+    ))
   }
 
+<<<<<<< Updated upstream
+=======
+  //save all message in cassandra direct
+  override def saveAll(message: Message): Unit = {
+    val statement =
+      session.prepare("INSERT INTO tranquilly.message(idPersonne, timestamp, message,user_name,coordinates) VALUES (?, ?, ?, ?,?)")
+
+    val batch =
+      BatchStatement
+        .newInstance(BatchType.LOGGED)
+        .addAll(
+          stocks
+            .map(stock =>
+              statement.bind(
+                messageVar.idPersonne,
+                messageVar.timestamp,
+                messageVar.message,
+                messageVar.user_name,
+                messageVar.coordinates
+              ))
+            .asJava
+        )
+
+    session.execute(batch)
+  }
+
+
+
+>>>>>>> Stashed changes
 }
