@@ -17,15 +17,10 @@ object ApiMain {
 
     val session = CqlSession.builder().build()
 
-<<<<<<< Updated upstream
-    val alertRepository: AlertRepository = new CassandraAlertRepository(session)
-    val messageRepository: MessageRepository = new CassandraMessageRepository(session)
-    val personneRepository: PersonneRepository = new CassandraPersonneRepository(session)
-=======
     val AlertRepository: AlertRepository = new CassandraAlertRepository(session)
+    val MessageRepository: MessageRepository = new CassandraMessageRepository(session)
+    val PersonneRepository: PersonneRepository = new CassandraPersonneRepository(session)
 
-    val MessageRepository : MessageRepository = new CassandraMessageRepository(session)
->>>>>>> Stashed changes
 
     get(
       "/api/history/alert",
@@ -37,18 +32,14 @@ object ApiMain {
 
         // Récupère le token
         val token : request.headers("Authorization")// à modifier si non fonctionnel
-        personneRepository.findFromToken()
+        PersonneRepository.findFromToken()
 
         // Récupère ids des enfants
-        val personne = personneRepository.findFromToken(token)
+        val personne = PersonneRepository.findFromToken(token)
         val enfants = personne.family_list
 
-<<<<<<< Updated upstream
-        val alerts: List[AlertGet] = alertRepository.findHistory(start,end,count,enfants).toList
-=======
-        val stocks: List[AlertGet] = AlertRepository.findHistory(start,stop,count,idsEnfants).toList
->>>>>>> Stashed changes
-        val doc                          = AlertGetJson.gson.toJson(stocks.asJava)
+        val alerts: List[AlertGet] = AlertRepository.findHistory(start,stop,count,idEnfants).toList
+        val doc                          = AlertGetJson.gson.toJson(alerts.asJava)
 
         response.`type`("application/json")
         doc
@@ -67,17 +58,13 @@ object ApiMain {
 
         // Récupère le token
         val token : request.headers("Authorization")// à modifier si non fonctionnel
-        personneRepository.findFromToken()
+        PersonneRepository.findFromToken()
 
         // Récupère ids des enfants
-        val personne = personneRepository.findFromToken(token)
+        val personne = PersonneRepository.findFromToken(token)
         val enfants = personne.family_list
 
-<<<<<<< Updated upstream
-        val messages: List[AlertGet] = messageRepository.findHistory(start,end,count,enfants).toList
-=======
         val stocks: List[AlertGet] = MessageRepository.findHistory(start,stop,count,idsEnfants).toList
->>>>>>> Stashed changes
         val doc                          = AlertGetJson.gson.toJson(stocks.asJava)
 
         response.`type`("application/json")
@@ -96,13 +83,13 @@ object ApiMain {
 
         // Récupère le token
         val token : request.headers("Authorization")// à modifier si non fonctionnel
-        personneRepository.findFromToken()
+        PersonneRepository.findFromToken()
 
         // Récupère ids des enfants
-        val personne = personneRepository.findFromToken(token)
+        val personne = PersonneRepository.findFromToken(token)
         val enfants = personne.family_list
 
-        val stocks: List[AlertGet] = alertRepository.findLastPosition(start,end,count,enfants).toList
+        val stocks: List[AlertGet] = AlertRepository.findLastPosition(start,end,count,enfants).toList
         val doc                          = AlertGetJson.gson.toJson(stocks.asJava)
 
         response.`type`("application/json")
