@@ -7,11 +7,6 @@ trait PersonneRepository {
 
   def findFromToken(token : String): Option[Personne]
 
-  def findFromId(idPersonne : String): Option[Personne]
-  
-  def findParents(idPersonne: String): Iterator[Personne]
-
-  def findChildren(idPersonne: String): Iterator[Personne]
-
+  def findIdFamily(idPersonne: String): String
 
 }

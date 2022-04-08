@@ -21,7 +21,7 @@ class CassandraMessageRepository(session: CqlSession)
 >>>>>>> Stashed changes
   override def findAllByIdsFamily(start: Long, end: Long, count: Long, idsFamily: Array): Iterator[Message] = {
     val statement =
-      session.prepare("SELECT * FROM tranquily.message WHERE timestamp BETWEEN(?,?) AND idPersonne in ? LIMIT ?")
+      session.prepare("SELECT * FROM tranquily.message WHERE timestamp BETWEEN(?,?) AND idFamily=  ? LIMIT ?")
     val result: List[Row] =
       session.execute(statement.bind(start,end,idsFamily,count)).all().asScala.toList
 

@@ -66,8 +66,8 @@ object InitMain {
             |  token Text,
             |  typePersonne TEXT,
             |  user_name TEXT,
-            |  liste_parents LIST,
-            |  liste_enfant LIST,
+            |  family_list LIST,
+            |  idsFamily LIST,
             |
             |  PRIMARY KEY (idPersonne)
             |)""".stripMargin)           
