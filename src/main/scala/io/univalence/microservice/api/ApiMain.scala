@@ -28,16 +28,12 @@ object ApiMain {
         val count = request.params("count")
 
         // Récupère le token
-        val token : request.headers("Authorization")// à modifier si non fonctionnel 
+        //val token : request.headers("Authorization")  // à modifier si non fonctionnel
 
         // Récupère ids des enfants
         val idsEnfants = Long
 
-<<<<<<< Updated upstream
         val stocks: List[AlertGet] = AlertRepository.findHistory(start,end,count,idsEnfants).toList
-=======
-        val stocks: List[AlertGet] = alertRepository.findHistory(start,stop,count,idsEnfants).toList
->>>>>>> Stashed changes
         val doc                          = AlertGetJson.gson.toJson(stocks.asJava)
 
         response.`type`("application/json")
@@ -56,7 +52,7 @@ object ApiMain {
         val count = request.params("count")
 
         // Récupère le token
-        val token : request.headers("Authorization")// à modifier si non fonctionnel
+        //val token : request.headers("Authorization")// à modifier si non fonctionnel
 
         // Récupère ids des enfants
         val idsEnfants = Array
@@ -69,11 +65,6 @@ object ApiMain {
       }
     )
 
-
-
-
-
-
     get(
       "/api/track:user_id",
       (request: Request, response: Response) => {
@@ -83,14 +74,7 @@ object ApiMain {
         // Récupère le token
         //Find tolen
 
-<<<<<<< Updated upstream
-        // Récupère ids des enfants
-        val idsEnfants = Array
-
-        val stocks: List[AlertGet] = alertRepository.findLastPosition(start,end,count,idsEnfants).toList
-=======
         val stocks: List[AlertGet] = alertRepository.findLastPosition(user_id).toList
->>>>>>> Stashed changes
         val doc                          = AlertGetJson.gson.toJson(stocks.asJava)
 
         response.`type`("application/json")
