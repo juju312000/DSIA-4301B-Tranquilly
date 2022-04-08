@@ -31,7 +31,7 @@ object ApiMain {
         val count = request.params("count")
 
         // Récupère le token
-        val token : request.headers("Authorization")// à modifier si non fonctionnel
+        val token : request.headers.get("Authorization")// à modifier si non fonctionnel
         personneRepository.findFromToken()
 
         // Récupère ids des enfants
@@ -57,7 +57,7 @@ object ApiMain {
         val count = request.params("count")
 
         // Récupère le token
-        val token : request.headers("Authorization")// à modifier si non fonctionnel
+        val token : request.headers.get("Authorization")// à modifier si non fonctionnel
         personneRepository.findFromToken()
 
         // Récupère ids des enfants
@@ -82,7 +82,7 @@ object ApiMain {
         val count = request.params("count")
 
         // Récupère le token
-        val token : request.headers("Authorization")// à modifier si non fonctionnel
+        val token : request.headers.get("Authorization")// à modifier si non fonctionnel
         personneRepository.findFromToken()
 
         // Récupère ids des enfants
