@@ -9,7 +9,7 @@ trait AlertRepository {
 
   def save(projectedStock: ProjectedStock): Unit
 
-  def findLastPosition(idEnfant: Array): Iterator[AlertPost]
+  def findLastPosition(idEnfant: Long): Iterator[AlertPost]
 
   def saveAll(alert: List[AlertPost]): Unit
 
