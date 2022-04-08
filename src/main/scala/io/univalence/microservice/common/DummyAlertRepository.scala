@@ -2,13 +2,13 @@ package io.univalence.microservice.common
 
 class DummyAlertRepository extends AlertRepository {
 
-  override def findAll(): Iterator[Alert] = Iterator.empty
+  override def findAll(): Iterator[AlertPost] = Iterator.empty
 
-  override def findById(id: String): Option[Alert] = None
+  override def findById(id: String): Option[AlertPost] = None
 
-  override def save(Alert: Alert): Unit = ()
+  override def save(alert: AlertPost): Unit = ()
 
-  override def saveAll(stocks: List[Alert]): Unit = ()
+  override def saveAll(stocks: List[AlertPost]): Unit = ()
 
 }
 

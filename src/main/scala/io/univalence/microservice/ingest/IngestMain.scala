@@ -27,6 +27,7 @@ object IngestMain {
     post(
       "/stocks/:id",
       { (request: Request, response: Response) =>
+      
         val id        = request.params("id")
         val body      = request.body()
         val timestamp = Instant.now().toEpochMilli

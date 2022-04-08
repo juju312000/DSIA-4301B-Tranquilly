@@ -27,10 +27,34 @@ object ApiMain {
         val stop = request.params("stop")
         val count = request.params("count")
 
-        // Récupère 
+        // Récupère le token
 
-        val stocks: List[Alert] = repository.findAll().toList
-        val doc                          = AlertJson.gson.toJson(stocks.asJava)
+        // Récupère ids des enfants
+        val idsEnfants = Array
+
+        val stocks: List[AlertGet] = alertRepository.findHistory(start,end,count,idsEnfants).toList
+        val doc                          = AlertGetJson.gson.toJson(stocks.asJava)
+
+        response.`type`("application/json")
+        doc
+      }
+    )
+
+    get(
+      "/api/track",
+      (request: Request, response: Response) => {
+        println(s"--> Requested to find alert")
+        val start = request.params("start")
+        val stop = request.params("stop")
+        val count = request.params("count")
+
+        // Récupère le token
+
+        // Récupère ids des enfants
+        val idsEnfants = Array
+
+        val stocks: List[AlertGet] = alertRepository.findHistory(start,end,count,idsEnfants).toList
+        val doc                          = AlertGetJson.gson.toJson(stocks.asJava)
 
         response.`type`("application/json")
         doc

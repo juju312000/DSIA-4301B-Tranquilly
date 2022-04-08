@@ -5,10 +5,12 @@ package io.univalence.microservice.common
  */
 trait AlertRepository {
 
-  def findHistory(start: Long, end: Long, count: Long, idEnfant: Array): Iterator[Alert]
+  def findHistory(start: Long, end: Long, count: Long, idEnfant: Array): Iterator[AlertPost]
 
   def save(projectedStock: ProjectedStock): Unit
 
-  def findLastPosition(idEnfant: Array): Iterator[Alert]
+  def findLastPosition(idEnfant: Array): Iterator[AlertPost]
+
+  def saveAll(alert: List[AlertPost]): Unit
 
 }
