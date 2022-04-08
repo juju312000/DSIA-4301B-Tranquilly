@@ -9,6 +9,4 @@ trait MessageRepository {
 
   def save(message: Message): Unit
 
-  def saveAll(message: Message): Unit
-
 }
