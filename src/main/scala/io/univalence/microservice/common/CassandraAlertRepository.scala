@@ -50,7 +50,7 @@ class CassandraAlertRepository(session: CqlSession)
     )
   }
 
-// Pas sur du type Array
+// Pas sûr du type Array
   // Appel depuis TRACK API
   override def findPosition(idEnfant: Array): Iterator[AlertGet] = {
     val statement =

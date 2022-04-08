@@ -28,17 +28,47 @@ object ApiMain {
         val count = request.params("count")
 
         // Récupère le token
+        val token : request.headers("Authorization")// à modifier si non fonctionnel 
 
         // Récupère ids des enfants
         val idsEnfants = Array
 
-        val stocks: List[AlertGet] = alertRepository.findHistory(start,end,count,idsEnfants).toList
+        val stocks: List[AlertGet] = AlertRepository.findHistory(start,end,count,idsEnfants).toList
         val doc                          = AlertGetJson.gson.toJson(stocks.asJava)
 
         response.`type`("application/json")
         doc
       }
     )
+
+
+    // à modifier
+    get(
+      "/api/history/message",
+      (request: Request, response: Response) => {
+        println(s"--> Requested to find message")
+        val start = request.params("start")
+        val stop = request.params("stop")
+        val count = request.params("count")
+
+        // Récupère le token
+        val token : request.headers("Authorization")// à modifier si non fonctionnel
+
+        // Récupère ids des enfants
+        val idsEnfants = Array
+
+        val stocks: List[AlertGet] = MessageRepository.findHistory(start,end,count,idsEnfants).toList
+        val doc                          = AlertGetJson.gson.toJson(stocks.asJava)
+
+        response.`type`("application/json")
+        doc
+      }
+    )
+
+
+
+
+
 
     get(
       "/api/track",
@@ -53,7 +83,7 @@ object ApiMain {
         // Récupère ids des enfants
         val idsEnfants = Array
 
-        val stocks: List[AlertGet] = alertRepository.findHistory(start,end,count,idsEnfants).toList
+        val stocks: List[AlertGet] = alertRepository.findLastPosition(start,end,count,idsEnfants).toList
         val doc                          = AlertGetJson.gson.toJson(stocks.asJava)
 
         response.`type`("application/json")
