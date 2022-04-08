@@ -18,6 +18,8 @@ object ApiMain {
     val session = CqlSession.builder().build()
 
     val alertRepository: AlertRepository = new CassandraAlertRepository(session)
+    val messageRepository: MessageRepository = new CassandraMessageRepository(session)
+    val personneRepository: PersonneRepository = new CassandraPersonneRepository(session)
 
     get(
       "/api/history/alert",
@@ -28,12 +30,14 @@ object ApiMain {
         val count = request.params("count")
 
         // Récupère le token
-        //val token : request.headers("Authorization")  // à modifier si non fonctionnel
+        val token : request.headers("Authorization")// à modifier si non fonctionnel
+        personneRepository.findFromToken()
 
         // Récupère ids des enfants
-        val idsEnfants = Long
+        val personne = personneRepository.findFromToken(token)
+        val enfants = personne.family_list
 
-        val stocks: List[AlertGet] = AlertRepository.findHistory(start,end,count,idsEnfants).toList
+        val alerts: List[AlertGet] = alertRepository.findHistory(start,end,count,enfants).toList
         val doc                          = AlertGetJson.gson.toJson(stocks.asJava)
 
         response.`type`("application/json")
@@ -52,12 +56,39 @@ object ApiMain {
         val count = request.params("count")
 
         // Récupère le token
-        //val token : request.headers("Authorization")// à modifier si non fonctionnel
+        val token : request.headers("Authorization")// à modifier si non fonctionnel
+        personneRepository.findFromToken()
 
         // Récupère ids des enfants
-        val idsEnfants = Array
+        val personne = personneRepository.findFromToken(token)
+        val enfants = personne.family_list
 
-        val stocks: List[AlertGet] = MessageRepository.findHistory(start,end,count,idsEnfants).toList
+        val messages: List[AlertGet] = messageRepository.findHistory(start,end,count,enfants).toList
+        val doc                          = AlertGetJson.gson.toJson(stocks.asJava)
+
+        response.`type`("application/json")
+        doc
+      }
+    )
+
+
+    get(
+      "/api/track",
+      (request: Request, response: Response) => {
+        println(s"--> Requested to find alert")
+        val start = request.params("start")
+        val stop = request.params("stop")
+        val count = request.params("count")
+
+        // Récupère le token
+        val token : request.headers("Authorization")// à modifier si non fonctionnel
+        personneRepository.findFromToken()
+
+        // Récupère ids des enfants
+        val personne = personneRepository.findFromToken(token)
+        val enfants = personne.family_list
+
+        val stocks: List[AlertGet] = alertRepository.findLastPosition(start,end,count,enfants).toList
         val doc                          = AlertGetJson.gson.toJson(stocks.asJava)
 
         response.`type`("application/json")
@@ -66,20 +97,24 @@ object ApiMain {
     )
 
     get(
-      "/api/track:user_id",
+      "/api/stocks/:id",
       (request: Request, response: Response) => {
-        println(s"--> Requested to find alert")
-        val user_id : Long = request.params("user_id").toLong
+        val id = request.params("id")
+        println(s"--> Requested to find stock of #$id")
+        val stock: Option[ProjectedStock] = repository.findById(id)
 
-        // Récupère le token
-        //Find tolen
+        if (stock.isEmpty) {
+          println(s"product#$id not found")
+          response.status(404)
 
-        val stocks: List[AlertGet] = alertRepository.findLastPosition(user_id).toList
-        val doc                          = AlertGetJson.gson.toJson(stocks.asJava)
+          s"Product#$id Not Found"
+        } else {
+          println(s"product#$id: $stock")
+          val doc = ProjectedStockJson.serialize(stock.get)
 
-        response.`type`("application/json")
-        doc
-
+          response.`type`("application/json")
+          doc
+        }
       }
     )
 
