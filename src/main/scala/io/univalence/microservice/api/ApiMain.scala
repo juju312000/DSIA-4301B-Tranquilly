@@ -36,7 +36,7 @@ object ApiMain {
 
         // Récupère ids des enfants
         val personne = personneRepository.findFromToken(token)
-        val enfants = personne.family_list
+        val idEnfants = personne.family_list
 
         val alerts: List[AlertGet] = alertRepository.findHistory(start,stop,count,idEnfants).toList
         val doc                          = AlertGetJson.gson.toJson(alerts.asJava)

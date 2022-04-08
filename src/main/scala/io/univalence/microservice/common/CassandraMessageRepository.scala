@@ -16,7 +16,7 @@ class CassandraMessageRepository(session: CqlSession)
   // Appel depuis history/Message
 
   // HISTORY API
-  override def findAllMessagesByIdsFamily(start: Long, end: Long, count: Long, idsFamily: Array): Iterator[Message] = {
+  override def findAllMessagesByIdsFamily(start: Long, end: Long, count: Long, idsFamily: Long): Iterator[Message] = {
     val statement =
       session.prepare("SELECT * FROM tranquily.message WHERE timestamp BETWEEN(?,?) AND idFamily=  ? LIMIT ?")
     val result: List[Row] =
