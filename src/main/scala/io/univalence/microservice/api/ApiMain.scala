@@ -17,15 +17,21 @@ object ApiMain {
 
     val session = CqlSession.builder().build()
 
+<<<<<<< Updated upstream
     val alertRepository: AlertRepository = new CassandraAlertRepository(session)
     val messageRepository: MessageRepository = new CassandraMessageRepository(session)
     val personneRepository: PersonneRepository = new CassandraPersonneRepository(session)
+=======
+    val AlertRepository: AlertRepository = new CassandraAlertRepository(session)
+
+    val MessageRepository : MessageRepository = new CassandraMessageRepository(session)
+>>>>>>> Stashed changes
 
     get(
       "/api/history/alert",
       (request: Request, response: Response) => {
         println(s"--> Requested to find alert")
-        val start = request.params("start")
+        val start = request.params("start").toLong
         val stop = request.params("stop")
         val count = request.params("count")
 
@@ -37,7 +43,11 @@ object ApiMain {
         val personne = personneRepository.findFromToken(token)
         val enfants = personne.family_list
 
+<<<<<<< Updated upstream
         val alerts: List[AlertGet] = alertRepository.findHistory(start,end,count,enfants).toList
+=======
+        val stocks: List[AlertGet] = AlertRepository.findHistory(start,stop,count,idsEnfants).toList
+>>>>>>> Stashed changes
         val doc                          = AlertGetJson.gson.toJson(stocks.asJava)
 
         response.`type`("application/json")
@@ -63,7 +73,11 @@ object ApiMain {
         val personne = personneRepository.findFromToken(token)
         val enfants = personne.family_list
 
+<<<<<<< Updated upstream
         val messages: List[AlertGet] = messageRepository.findHistory(start,end,count,enfants).toList
+=======
+        val stocks: List[AlertGet] = MessageRepository.findHistory(start,stop,count,idsEnfants).toList
+>>>>>>> Stashed changes
         val doc                          = AlertGetJson.gson.toJson(stocks.asJava)
 
         response.`type`("application/json")
