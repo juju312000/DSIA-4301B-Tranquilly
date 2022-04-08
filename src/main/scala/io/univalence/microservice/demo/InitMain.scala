@@ -36,7 +36,7 @@ object InitMain {
             |   'replication_factor': 1
             | }""".stripMargin)
 
-      println(s"Create table tranquily.message ...")
+      println(s"Create table tranquilly.message ...")
       session.execute(s"""CREATE TABLE IF NOT EXISTS $messageTable (
             |  idMessage TEXT,
             |  timestamp BIGINT,
@@ -48,7 +48,7 @@ object InitMain {
             |  PRIMARY KEY (idMessage)
             |)""".stripMargin)
 
-      println(s"Create table tranquily.alert ...")
+      println(s"Create table tranquilly.alert ...")
       session.execute(s"""CREATE TABLE IF NOT EXISTS $alertTable (
             |  idAlert TEXT,
             |  timestamp BIGINT,
@@ -60,7 +60,7 @@ object InitMain {
             |  PRIMARY KEY (idMessage)
             |)""".stripMargin) 
 
-      println(s"Create table tranquily.personne ...")
+      println(s"Create table tranquilly.personne ...")
       session.execute(s"""CREATE TABLE IF NOT EXISTS $personneTable (
             |  idPersonne TEXT,
             |  token Text,
