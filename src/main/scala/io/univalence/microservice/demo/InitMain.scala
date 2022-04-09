@@ -9,13 +9,13 @@ import scala.util.{Try, Using}
 object InitMain {
 
   // Cassandra configuration
-  val keyspace: String = Configuration.TranquilyKeyspace
+  val keyspace: String = Configuration.TranquillyKeyspace
   val messageTable: String    = Configuration.MessageTable
   val alertTable: String    = Configuration.AlertTable
   val personneTable: String    = Configuration.PersonneTable
 
   // Kafka configuration
-  val topic: String   = Configuration.StockInfoTopic
+  val topic: String   = Configuration.TranquillyInfoTopic
   val partitions: Int = 8
 
   import scala.jdk.CollectionConverters._
@@ -36,7 +36,7 @@ object InitMain {
             |   'replication_factor': 1
             | }""".stripMargin)
 
-      println(s"Create table tranquily.message ...")
+      println(s"Create table tranquilly.message ...")
       session.execute(s"""CREATE TABLE IF NOT EXISTS $messageTable (
             |  idMessage TEXT,
             |  timestamp BIGINT,
@@ -48,7 +48,7 @@ object InitMain {
             |  PRIMARY KEY (idMessage)
             |)""".stripMargin)
 
-      println(s"Create table tranquily.alert ...")
+      println(s"Create table tranquilly.alert ...")
       session.execute(s"""CREATE TABLE IF NOT EXISTS $alertTable (
             |  idAlert TEXT,
             |  timestamp BIGINT,
@@ -60,14 +60,14 @@ object InitMain {
             |  PRIMARY KEY (idMessage)
             |)""".stripMargin) 
 
-      println(s"Create table tranquily.personne ...")
+      println(s"Create table tranquilly.personne ...")
       session.execute(s"""CREATE TABLE IF NOT EXISTS $personneTable (
             |  idPersonne TEXT,
             |  token Text,
             |  typePersonne TEXT,
             |  user_name TEXT,
+            |  idFamily TEXT,
             |  family_list LIST,
-            |  idsFamily LIST,
             |
             |  PRIMARY KEY (idPersonne)
             |)""".stripMargin)           

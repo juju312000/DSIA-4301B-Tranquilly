@@ -2,16 +2,17 @@ package io.univalence.microservice.demo
 
 import io.univalence.microservice.common.{
   Configuration,
-  DeltaStock,
-  DeltaStockJson,
-  Stock,
-  StockJson
+  Message,
+  Personne,
+  PersonneId,
+  AlertGet,
+  AlertPost,
 }
 import okhttp3._
 
 import scala.util.{Random, Using}
 
-/** Inject random stock data in the application.
+/** Inject random cord data in the application.
   */
 object InjectorMain {
 
@@ -23,11 +24,11 @@ object InjectorMain {
   def main(args: Array[String]): Unit = {
     val httpClient = new OkHttpClient.Builder().build()
 
-    println("--> Initialize stocks")
+    println("--> Initialize table")
 
     initStocks(httpClient)
 
-    println("--> Send stocks and deltas")
+    println("--> Send coord for tracking")
 
     /** Endlessly sends data...
       */

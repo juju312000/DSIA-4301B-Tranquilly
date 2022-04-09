@@ -9,11 +9,13 @@ import scala.util.Using
 object CleanMain {
 
   // Cassandra configuration
-  val keyspace: String = Configuration.TranquilyKeyspace
-  val table: String    = Configuration.StockTable
+  val keyspace: String = Configuration.TranquillyKeyspace
+  val MessageTable: String    = Configuration.MessageTable
+  val AlertTable: String    = Configuration.AlertTable
+  val PersonneTable: String    = Configuration.PersonneTable
 
   // Kafka configuration
-  val topic: String   = Configuration.StockInfoTopic
+  val topic: String   = Configuration.TranquillyInfoTopic
 
   import scala.jdk.CollectionConverters._
 

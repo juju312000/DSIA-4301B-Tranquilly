@@ -5,13 +5,13 @@ object Configuration {
   val IngestHttpPort = 10001
   val ApiHttpPort    = 10000
 
-  val TranquilyKeyspace = "tranquily"
-  val MessageTable    = s"$StoreKeyspace.message"
-  val AlertTable    = s"$StoreKeyspace.alert"
-  val PersonneTable    = s"$StoreKeyspace.personne"
+  val TranquillyKeyspace = "tranquilly"
+  val MessageTable    = s"$TranquillyKeyspace.message"
+  val AlertTable    = s"$TranquillyKeyspace.alert"
+  val PersonneTable    = s"$TranquillyKeyspace.personne"
 
   val KafkaBootstrap = "localhost:9092"
-  val StockInfoTopic = "stock-info"
+  val TranquillyInfoTopic = "tranquilly-info"
 
   object StockTableFields {
     val id        = "id"
