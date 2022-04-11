@@ -5,7 +5,7 @@ import io.univalence.microservice.common._
 import org.apache.kafka.clients.consumer.{ConsumerConfig, ConsumerRecord, ConsumerRecords, KafkaConsumer}
 import org.apache.kafka.common.serialization.StringDeserializer
 
-object ProcessAlert {
+object ProcessMessage {
 
   import scala.jdk.CollectionConverters._
 
@@ -15,7 +15,7 @@ object ProcessAlert {
 
     val session = CqlSession.builder().build()
 
-    val alertRepository: AlertRepository = new CassandraAlertRepository(session)
+    val messageRepository: MessageRepository = new CassandraMessageRepository(session)
     val personneRepository: PersonneRepository = new CassandraPersonneRepository(session)
 
     // TODO create a consumer and subscribe to Kafka topic
@@ -31,50 +31,50 @@ object ProcessAlert {
         new StringDeserializer
       )
 
-    consumer.subscribe(List(Configuration.AlertTopic).asJava)
+    consumer.subscribe(List(Configuration.MessageTopic).asJava)
 
     while (true) {
       // Récupère depuis Kafka
-      val alertToken: List[AlertIngestToken] = nexAlertToken(consumer)
+      val messageToken: List[MessageIngestToken] = nexMessageToken(consumer)
 
       // Regarde dans la db si le produit existe (ici on veut récupérer les personnes depuis le token)
 
-      val newAlerts: List[AlertPersonne] =
-        alertToken.map { alert =>
+      val newMessages: List[MessagePersonne] =
+        messageToken.map { message =>
           val personne =
             personneRepository
-              .findFromToken(alert.token)
+              .findFromToken(message.token)
               //.getOrElse(// drop ?)
 
-          aggregateWithPersonne(alert, personne)
+          aggregateWithPersonne(message, personne)
         }
 
-      alertRepository.saveAll(newAlerts)
+      messageRepository.saveAll(newMessages)
     }
   }
 
   def aggregateWithPersonne(
-      alertToken: AlertIngestToken,
+      messageToken: MessageIngestToken,
       personne: Personne
-  ): AlertPersonne = {
+  ): MessagePersonne = {
 
-    AlertPersonne(
+    MessagePersonne(
         user_id = personne.idPersonne,
         user_name = personne.user_name,
-        timestamp = alertToken.timestamp,
-        reason = alertToken.reason,
-        coordinates = alertToken.coordinates
+        timestamp = messageToken.timestamp,
+        message = messageToken.message,
+        coordinates = messageToken.coordinates
       )
   }
 
-  def nextAlertToken(consumer: KafkaConsumer[String, String]): List[AlertIngestToken] = {
+  def nextMessageToken(consumer: KafkaConsumer[String, String]): List[MessageIngestToken] = {
     val records: Iterable[ConsumerRecord[String, String]] =
       consumer.poll(java.time.Duration.ofSeconds(5)).asScala
 
     records.map { record =>
       println(s"Got record: $record")
       val doc = record.value()
-      AlertIngestTokenJson.deserialize(doc)
+      MessageIngestTokenJson.deserialize(doc)
     }.toList
   }
 

@@ -25,18 +25,23 @@ object IngestMessage {
       )
 
     post(
-      "/message/",
+      "/message",
       { (request: Request, response: Response) =>
 
         
         val body      = request.body()
-        val timestamp = Instant.now().toEpochMilli
+
+        // Extract token
+
+        token = NULL
+
         println(s"--> Received@$timestamp: data: $body")
 
-        val message = AlertIngestJSON.deserialize(body)
-        println(s"Deserialized data: $alert")
+        val messageVar = MessageIngestJSON.deserialize(body)
+        println(s"Deserialized data: $messageVar")
 
-        sendAlert(alert, producer)
+        val messageToken = messageToMessageToken(messageVar,token)
+        sendMessage(messageToken, producer)
 
         "ok"
       }
@@ -45,15 +50,24 @@ object IngestMessage {
   }
 
 
-  def sendStockInfo(
-      alert: AlertIngest,
+ //Permet d'ajouter le token utilisateur
+  def messageToMessageToken(messageVar : MessageIngest, token : String):
+      MessageIngestToken(
+        token = token,
+        coordinates = messageVar.coordinates,
+        timestamp = messageVar.timestamp,
+        message = messageVar.message
+      )
+
+  def sendMessage(
+      messageVar: MessageIngestToken,
       producer: KafkaProducer[String, String]
   ): Unit = {
-    val doc = AlertIngest.serialize(alert)
+    val doc = MessageIngestTokenJson.serialize(messageVar)
 
     // TODO send stock info into Kafka
     val record: ProducerRecord[String, String] =
-      new ProducerRecord[String, String](Configuration.AlertTopic, doc)
+      new ProducerRecord[String, String](Configuration.MessageTopic, doc)
 
     producer.send(record)
   }

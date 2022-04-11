@@ -2,12 +2,12 @@ package io.univalence.microservice.common
 
 import com.google.gson.Gson
 
-case class Message(idpersonne: String, timestamp: Long, message: String,user_name : String, coordinates : Array)
-object MessageJson {
+case class MessageIngest(timestamp: Long, reason: String,coordinates : List[Float])
+object MessageIngestJson {
   val gson = new Gson()
 
-  def serialize(message: Message): String =
-    gson.toJson(message)
-  def deserialize(data: String): Message =
-    gson.fromJson(data, classOf[Message])
+  def serialize(alert: MessageIngest): String =
+    gson.toJson(alert)
+  def deserialize(data: String): MessageIngest =
+    gson.fromJson(data, classOf[MessageIngest])
 }

@@ -3,11 +3,11 @@ package io.univalence.microservice.common
 import com.google.gson.Gson
 
 case class AlertPersonne(user_id: String,user_name: String, timestamp: Long, reason: String,coordinates : List[Float])
-object AlertIngestTokenJson {
+object AlertPersonneJson {
   val gson = new Gson()
 
-  def serialize(alert: AlertIngestToken): String =
+  def serialize(alert: AlertPersonne): String =
     gson.toJson(alert)
-  def deserialize(data: String): AlertIngestToken =
-    gson.fromJson(data, classOf[AlertIngestToken])
+  def deserialize(data: String): AlertPersonne =
+    gson.fromJson(data, classOf[AlertPersonne])
 }
