@@ -16,11 +16,11 @@ class CassandraMessageRepository(session: CqlSession)
   // Appel depuis history/Message
 
   // HISTORY API
-  override def findAllMessagesByIdsFamily(start: Long, end: Long, count: Long, idsFamily: Long): Iterator[Message] = {
+  override def findAllMessagesByIdsFamily(start: Long, end: Long, count: Long, idFamily: Long): Iterator[Message] = {
     val statement =
       session.prepare("SELECT * FROM tranquily.message WHERE timestamp BETWEEN(?,?) AND idFamily=  ? LIMIT ?")
     val result: List[Row] =
-      session.execute(statement.bind(start,end,idsFamily,count)).all().asScala.toList
+      session.execute(statement.bind(start,end,idFamily,count)).all().asScala.toList
 
     result
       .map(result =>

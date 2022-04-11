@@ -2,7 +2,8 @@ package io.univalence.microservice.common
 
 object Configuration {
 
-  val IngestHttpPort = 10001
+  val IngestMessageHttpPort = 10002
+  val IngestAlertHttpPort = 10001
   val ApiHttpPort    = 10000
 
   val TranquillyKeyspace = "tranquilly"
@@ -11,7 +12,8 @@ object Configuration {
   val PersonneTable    = s"$TranquillyKeyspace.personne"
 
   val KafkaBootstrap = "localhost:9092"
-  val TranquillyInfoTopic = "tranquilly-info"
+  val AlertTopic = "alert"
+  val MessageTopic = "message"
 
   object StockTableFields {
     val id        = "id"

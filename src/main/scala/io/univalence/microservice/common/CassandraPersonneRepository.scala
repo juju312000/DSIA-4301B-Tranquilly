@@ -12,35 +12,35 @@ class CassandraPersonneRepository(session: CqlSession)
 
   
   
-  override def findIdFamily(idPersonne: Long): List[Long] = {
+  override def findIdFamily(idPersonne: String): Long = {
     val statement =
-      session.prepare("SELECT idFamily FROM tranquilly.personne WHERE idPersonne = ?")
-    val result: List[Row] =
-      session.execute(statement.bind(idPersonne)).all().asScala.toList
+      session.prepare("SELECT idFamily FROM tranquily.personne WHERE idPersonne = ?")
 
-   result
-     .map(
-       result =>
-        result.getLong("idFamily")
+    val result: Option[Row] = Option(session.execute(statement.bind(idFamily)).one())
+
+
+   result.map(result =>
+        result.getString("idFamily")
       )
   }
 
-  override def findFromToken(token: Long): List[Personne] = {
+  override def findFromToken(token: String): Personne = {
     val statement =
-      session.prepare("SELECT * FROM tranquilly.personne WHERE token = ?")
-    val result: List[Row] =
-      session.execute(statement.bind(token)).all().asScala.toList
-
+      session.prepare("SELECT * FROM tranquily.personne WHERE token = ?")
+    val result: Option[Row] = Option(session.execute(statement.bind(token)).one())
+    
    result.map(result =>
       Personne(
-        idPersonne = result.getLong("idPersonne"),
+        idPersonne = result.getString("idPersonne"),
         user_name = result.getString("user_name"),
         personne_type = result.getString("personne_type"),
-        idFamily = result.getLong("idFamily"),
-        family_list = result.getList("family_list", classOf[Long]).asScala.toList
+        family_list = result.getList("family_list")
+        idFamily = result.getString("idFamily")
       )
     )
   }
+
+  
 
 
 }
