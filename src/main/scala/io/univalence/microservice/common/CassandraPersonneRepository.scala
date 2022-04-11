@@ -18,17 +18,17 @@ class CassandraPersonneRepository(session: CqlSession)
     val result: List[Row] =
       session.execute(statement.bind(idFamily)).all().asScala.toList
 
+
    result.map(result =>
         result.getString("idFamily")
       )
   }
 
-  override def findFromToken(token: Long): Long = {
+  override def findFromToken(token: Long): Personne = {
     val statement =
       session.prepare("SELECT * FROM tranquily.personne WHERE token = ?")
-    val result: List[Row] =
-      session.execute(statement.bind(idFamily)).all().asScala.toList
-
+    val result: Option[Row] = Option(session.execute(statement.bind(token)).one())
+    
    result.map(result =>
       Personne(
         idPersonne = result.getString("idPersonne"),
