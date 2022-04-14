@@ -18,6 +18,10 @@ object ProcessAlert {
     val alertRepository: AlertRepository = new CassandraAlertRepository(session)
     val personneRepository: PersonneRepository = new CassandraPersonneRepository(session)
 
+
+    val httpClient = new OkHttpClient.Builder().build()
+
+    
     // TODO create a consumer and subscribe to Kafka topic
 
     val consumer =
@@ -46,11 +50,67 @@ object ProcessAlert {
               .findFromToken(alert.token)
               //.getOrElse(// drop ?)
 
-          aggregateWithPersonne(alert, personne)
+          val alertPersonne = aggregateWithPersonne(alert, personne)
+          // Envoi de la notif
+
+          sendNotif(alertPersonne,httpClient)
+
+          alertPersonne
         }
 
       alertRepository.saveAll(newAlerts)
     }
+  }
+
+  def sendNotif(alertPersonne : AlertPersonne, client: OkHttpClient): Unit = {
+      // On récupère l'id personne
+      val from_id = alertPersonne.user_id
+
+      // On récupère la liste des autres memebres de la famille (les parents)
+      val parents = personneRepository.
+      (from_id)
+
+      // Pour chaque parent on ajoute à AlertPersonne et on envoie
+
+      for (parent <- parents) {
+        val alertService = AlertService(
+          to_id = parent.user_id,
+          to_name = parent.user_id,
+          from_name = alertPersonne.user_name,
+          from_id = alertPersonne.user_id,
+          timestamp = alertPersonne.timestamp,
+          server_timestamp = Instant.now().toEpochMilli,
+          reason = alertPersonne.reason
+        )
+        sendDoc(
+                AlertServiceJson.serialize(alertService),
+                s"http://adresse.com/alert/notify",
+                client
+              )
+      }
+
+      
+
+  }
+
+  def sendDoc(doc: String, url: String, client: OkHttpClient): Unit = {
+    println(s"Sending to $url: $doc")
+
+    val body = RequestBody.create(doc, MediaType.parse("application/json"))
+    val request = new Request.Builder()
+      .url(url)
+      .post(body)
+      .build()
+
+    Using(client.newCall(request).execute()) { response =>
+      if (response.isSuccessful) {
+        println(s"Success: data: $doc")
+      } else {
+        println(
+          s"Error: ${response.message()} (${response.code()}) - data: $doc"
+        )
+      }
+    }.get
   }
 
   def aggregateWithPersonne(

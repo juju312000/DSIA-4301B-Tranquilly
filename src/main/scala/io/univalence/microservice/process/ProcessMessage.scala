@@ -47,6 +47,8 @@ object ProcessMessage {
               //.getOrElse(// drop ?)
 
           aggregateWithPersonne(message, personne)
+          // Envoi de la notif
+          
         }
 
       messageRepository.saveAll(newMessages)

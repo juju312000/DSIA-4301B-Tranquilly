@@ -39,8 +39,8 @@ object ApiHistory {
         //val enfants = personne.family_list
         val idsEnfants : Long = 2
 
-        val stocks: List[Message] = messageRepository.findAllMessagesByIdsFamily(start,stop,count,idsEnfants).toList
-        val doc                          = AlertGetJson.gson.toJson(stocks.asJava)
+        val messages: List[Message] = messageRepository.findAllMessagesByIdsFamily(start,stop,count,idsEnfants).toList
+        val doc                          = AlertGetJson.gson.toJson(messages.asJava)
 
         response.`type`("application/json")
         doc
@@ -65,8 +65,8 @@ object ApiHistory {
         //val enfants = personne.family_list
         val idsEnfants : Long = 2
 
-        val stocks: List[AlertPost] = alertRepository.findHistory(start,stop,count,idsEnfants).toList
-        val doc                          = AlertGetJson.gson.toJson(stocks.asJava)
+        val alerts: List[AlertPersonne] = alertRepository.findHistory(start,stop,count,idsEnfants).toList
+        val doc                          = AlertGetJson.gson.toJson(alerts.asJava)
 
         response.`type`("application/json")
         doc

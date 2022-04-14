@@ -6,7 +6,7 @@ import io.univalence.microservice.common.{
   Personne,
   PersonneId,
   AlertGet,
-  AlertPost,
+  AlertPersonne,
 }
 import okhttp3._
 

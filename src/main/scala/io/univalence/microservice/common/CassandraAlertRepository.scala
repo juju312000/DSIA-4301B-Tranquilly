@@ -35,7 +35,7 @@ class CassandraAlertRepository(session: CqlSession)
       .iterator
   }
 
-  override def save(alert: AlertPost): Unit = {
+  override def save(alert: AlertPersonne): Unit = {
     val statement =
       session.prepare("INSERT INTO tranquilly.alert(idEnfant, timestamp, reason,user_name,coordinates) VALUES (?, ?, ?, ?, ?)")
     session.execute(
@@ -50,7 +50,7 @@ class CassandraAlertRepository(session: CqlSession)
 
 // Pas sûr du type Array
   // Appel depuis TRACK API
-  override def findLastPosition(idEnfant: Long): Iterator[AlertGet] = {
+  override def findLastPosition(idEnfant: String): Iterator[AlertGet] = {
     val statement =
       session.prepare("SELECT * FROM tranquilly.alert WHERE reason = 'TRACKING' AND idEnfant == ? ORDER BY timestamp DESC LIMIT 1")
       // Permet de récupérer la dernière position d'un enfant
@@ -71,7 +71,7 @@ class CassandraAlertRepository(session: CqlSession)
       .iterator
   }
 
-  override def saveAll(alert: List[AlertPost]): Unit = {
+  override def saveAll(alert: List[AlertPersonne]): Unit = {
     val statement =
       session.prepare("INSERT INTO tranquily.alert(idEnfant, timestamp, reason,user_name,coordinates) VALUES (?, ?, ?, ?, ?)")
 

@@ -70,6 +70,7 @@ object InitMain {
             |  family_list LIST,
             |
             |  PRIMARY KEY (idPersonne)
+
             |)""".stripMargin)           
     }.get
 

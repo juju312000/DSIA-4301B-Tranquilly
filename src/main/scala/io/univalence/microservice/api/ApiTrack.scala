@@ -35,7 +35,7 @@ object ApiTrack {
         //val personne =personneRepository.findFromToken(token)
         //val enfants = personne.family_list
 
-        val stocks: List[AlertPost] = alertRepository.findLastPosition(id).toList
+        val stocks: List[AlertPersonne] = alertRepository.findLastPosition(id).toList
         val doc                          = AlertGetJson.gson.toJson(stocks.asJava)
 
         response.`type`("application/json")
