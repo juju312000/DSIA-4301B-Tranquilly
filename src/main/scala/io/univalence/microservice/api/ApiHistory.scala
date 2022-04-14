@@ -40,7 +40,7 @@ object ApiHistory {
         val idsEnfants : Long = 2
 
         val messages: List[Message] = messageRepository.findAllMessagesByIdsFamily(start,stop,count,idsEnfants).toList
-        val doc                          = AlertGetJson.gson.toJson(messages.asJava)
+        val doc                          = Message.gson.toJson(messages.asJava)
 
         response.`type`("application/json")
         doc
@@ -52,20 +52,21 @@ object ApiHistory {
       "/api/history/alert",
       (request: Request, response: Response) => {
         println(s"--> Requested to find message")
-        val start : Long = request.params("start").toLong
-        val stop : Long= request.params("stop").toLong
-        val count : Int = request.params("count").toInt
-
+        
         // Récupère le token
         //val token : request.headers("Authorization")// à modifier si non fonctionnel
         //personneRepository.findFromToken()
 
         // Récupère ids des enfants
-        //val personne = personneRepository.findFromToken(token)
-        //val enfants = personne.family_list
-        val idsEnfants : String = "2"
+        val start : Long = request.params("start").toLong
+        val stop : Long= request.params("stop").toLong
+        val count : Int = request.params("count").toInt
 
-        val alerts: List[AlertPersonne] = alertRepository.findHistory(start,stop,count,idsEnfants).toList
+        val token : String = NULL
+        val personne = personneRepository.findFromToken(token)
+        val enfants = personne.family_list
+
+        val alerts: List[AlertGet] = alertRepository.findHistory(start,stop,count,enfants).toList
         val doc                          = AlertGetJson.gson.toJson(alerts.asJava)
 
         response.`type`("application/json")

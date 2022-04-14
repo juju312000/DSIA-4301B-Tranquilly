@@ -16,7 +16,7 @@ class CassandraMessageRepository(session: CqlSession)
   // Appel depuis history/Message
 
   // HISTORY API
-  override def findAllMessagesByIdsFamily(start: Long, end: Long, count: Long, idFamily: Long): Iterator[Message] = {
+  override def findAllMessagesByIdFamily(start: Long, end: Long, count: Long, idFamily: Long): Iterator[Message] = {
     val statement =
       session.prepare("SELECT * FROM tranquily.message WHERE timestamp BETWEEN(?,?) AND idFamily=  ? LIMIT ?")
     val result: List[Row] =
@@ -29,8 +29,8 @@ class CassandraMessageRepository(session: CqlSession)
           message = result.getString("reason"),
           timestamp = result.getLong("timestamp"),
           user_name = result.getString("user_name"),
-          coordinates = result.getList("coordinates", classOf[Double]).asScala.toList
-          // Comment ajouter server_timestamp ? Qu'est-ce ?
+          coordinates = result.getList("coordinates", classOf[Double]).asScala.toList,
+          server_timestamp = Instant.now().toEpochMilli
         )
       )
       .iterator

@@ -5,7 +5,7 @@ package io.univalence.microservice.common
  */
 trait MessageRepository {
 
-  def findAllMessagesByIdsFamily(start: Long, end: Long, count: Long, idsFamily: Long): Iterator[Message]
+  def findAllMessagesByIdFamily(start: Long, end: Long, count: Long, idsFamily: Long): Iterator[Message]
 
   def save(message: Message): Unit
 
