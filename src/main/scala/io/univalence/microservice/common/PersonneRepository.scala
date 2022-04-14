@@ -9,5 +9,6 @@ trait PersonneRepository {
 
   def findIdFamily(idPersonne: String): Long
 
+  def findListIdFamily(idFamily : String) : List[String]
 
 }

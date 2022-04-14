@@ -32,7 +32,7 @@ object IngestAlert {
         val body      = request.body()
         val timestamp = Instant.now().toEpochMilli
 
-        val token = NULL // Extract token here
+        val token = null // Extract token here
         println(s"--> Received@$timestamp: data: $body")
 
         val alert = AlertIngestJson.deserialize(body)
@@ -52,12 +52,15 @@ object IngestAlert {
 
   //Permet d'ajouter le token utilisateur
   def alertToAlertToken(alert : AlertIngest, token : String):
+    AlertIngestToken = {
       AlertIngestToken(
         token = token,
         coordinates = alert.coordinates,
         timestamp = alert.timestamp,
         reason = alert.reason
       )
+  }
+
 
   def sendAlert(
       alert: AlertIngestToken,

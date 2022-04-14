@@ -39,7 +39,7 @@ object ProcessAlert {
 
     while (true) {
       // Récupère depuis Kafka
-      val alertToken: List[AlertIngestToken] = nexAlertToken(consumer)
+      val alertToken: List[AlertIngestToken] = nextAlertToken(consumer)
 
       // Regarde dans la db si le produit existe (ici on veut récupérer les personnes depuis le token)
 
@@ -66,8 +66,8 @@ object ProcessAlert {
       // On récupère l'id personne
       val from_id = alertPersonne.user_id
 
-      // On récupère la liste des autres memebres de la famille (les parents)
-      val parents = personneRepository.
+      // On récupère la liste des autres membres de la famille (les parents)
+      val idsParents :List[String] = CassandraPersonneRepository.findListIdFamily(from_id)
       (from_id)
 
       // Pour chaque parent on ajoute à AlertPersonne et on envoie

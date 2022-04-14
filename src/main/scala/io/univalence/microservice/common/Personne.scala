@@ -2,7 +2,7 @@ package io.univalence.microservice.common
 
 import com.google.gson.Gson
 
-case class Personne(idPersonne: Long, user_name: String, personne_type : String, idFamily : Long,family_list: List[Long])
+case class Personne(idPersonne: String, user_name: String, personne_type : String, idFamily : String, family_list: List[String])
 object PersonneJson {
   val gson = new Gson()
 

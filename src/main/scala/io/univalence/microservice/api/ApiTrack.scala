@@ -25,7 +25,7 @@ object ApiTrack {
       "/api/track:id",
       (request: Request, response: Response) => {
         println(s"--> Requested to find alert")
-        val id : Long = request.params("id").toLong
+        val id : String = request.params("id").toString
 
         // Récupère le token
         //val token : request.headers("Authorization")// à modifier si non fonctionnel

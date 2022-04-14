@@ -40,10 +40,10 @@ class CassandraAlertRepository(session: CqlSession)
       session.prepare("INSERT INTO tranquilly.alert(idEnfant, timestamp, reason,user_name,coordinates) VALUES (?, ?, ?, ?, ?)")
     session.execute(
       statement.bind(
-        alert.idEnfant,
+        alert.user_id,
+        alert.user_name,
         alert.timestamp,
         alert.reason,
-        alert.user_name,
         alert.coordinates
       ))
   }
@@ -81,7 +81,7 @@ class CassandraAlertRepository(session: CqlSession)
         .addAll(
           alert
             .map(alert =>
-              statement.bind(alert.idEnfant,alert.reason,alert.timestamp,alert.user_name,alert.coordinates)
+              statement.bind(alert.user_id,alert.reason,alert.timestamp,alert.user_name,alert.coordinates)
             )
             .asJava
         )

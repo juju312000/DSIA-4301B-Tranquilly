@@ -28,16 +28,15 @@ object IngestMessage {
       "/message",
       { (request: Request, response: Response) =>
 
-        
         val body      = request.body()
 
-        // Extract token
-
-        token = NULL
-
+        val timestamp = Instant.now().toEpochMilli
         println(s"--> Received@$timestamp: data: $body")
 
-        val messageVar = MessageIngestJSON.deserialize(body)
+        // Extract token
+        val token = null
+
+        val messageVar = MessageIngestJson.deserialize(body)
         println(s"Deserialized data: $messageVar")
 
         val messageToken = messageToMessageToken(messageVar,token)
@@ -49,15 +48,16 @@ object IngestMessage {
 
   }
 
-
  //Permet d'ajouter le token utilisateur
   def messageToMessageToken(messageVar : MessageIngest, token : String):
+    MessageIngestToken = {
       MessageIngestToken(
         token = token,
         coordinates = messageVar.coordinates,
         timestamp = messageVar.timestamp,
         message = messageVar.message
       )
+  }
 
   def sendMessage(
       messageVar: MessageIngestToken,

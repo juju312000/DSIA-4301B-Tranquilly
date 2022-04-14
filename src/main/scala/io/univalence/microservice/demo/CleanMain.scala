@@ -15,7 +15,7 @@ object CleanMain {
   val PersonneTable: String    = Configuration.PersonneTable
 
   // Kafka configuration
-  val topic: String   = Configuration.TranquillyInfoTopic
+  val topic: String   = Configuration.AlertTopic
 
   import scala.jdk.CollectionConverters._
 

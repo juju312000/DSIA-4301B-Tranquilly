@@ -15,7 +15,7 @@ object InitMain {
   val personneTable: String    = Configuration.PersonneTable
 
   // Kafka configuration
-  val topic: String   = Configuration.TranquillyInfoTopic
+  val topic: String   = Configuration.AlertTopic
   val partitions: Int = 8
 
   import scala.jdk.CollectionConverters._
