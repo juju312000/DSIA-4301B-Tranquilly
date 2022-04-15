@@ -71,7 +71,13 @@ object InitMain {
             |
             |  PRIMARY KEY (idPersonne)
 
-            |)""".stripMargin)           
+            |)""".stripMargin)    
+
+      println(s"Insert personne ...")
+      session.execute(s"""INSERT INTO tranquilly.personne VALUES (1,Ey4Ip6JBGp,"parent","parent_1",1,[3,4])""".stripMargin)    
+      session.execute(s"""INSERT INTO tranquilly.personne VALUES  (2,Ey4Ip6JBGm,"parent","parent_2",1,[3,4])""".stripMargin)    
+      session.execute(s"""INSERT INTO tranquilly.personne VALUES  (3,Ey4Ip6JBGn,"enfant","enfant_1",1,[1,2])""".stripMargin)    
+      session.execute(s"""INSERT INTO tranquilly.personne VALUES  (4,Ey4Ip6JBGh,"enfant","enfant_2",1,[1,2])""".stripMargin)    
     }.get
 
     println("--> Prepare Kafka")
