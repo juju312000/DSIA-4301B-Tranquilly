@@ -10,9 +10,8 @@ class CassandraPersonneRepository(session: CqlSession)
 
   import scala.jdk.CollectionConverters._
 
-  
-  
-  override def findIdFamily(idPersonne: String): List[String] = {
+
+  override def findIdFamily(idPersonne: String): String = {
     val statement =
       session.prepare("SELECT idFamily FROM tranquily.personne WHERE idPersonne = ?")
 
@@ -20,7 +19,7 @@ class CassandraPersonneRepository(session: CqlSession)
 
     result.map(result =>
         result.getString("idFamily")
-      ).toList
+      ).toString
   }
 
   override def findFromToken(token: String): Personne = {

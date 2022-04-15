@@ -43,7 +43,7 @@ object InitMain {
             |  message TEXT,
             |  idPersonne TEXT,
             |  user_name TEXT,
-            |  coordinates LIST,
+            |  coordinates list<DOUBLE>,
             |
             |  PRIMARY KEY (idMessage)
             |)""".stripMargin)
@@ -55,19 +55,19 @@ object InitMain {
             |  reason TEXT,
             |  idEnfant TEXT,
             |  user_name TEXT,
-            |  coordinates LIST,
+            |  coordinates list<DOUBLE>,
             |
-            |  PRIMARY KEY (idMessage)
+            |  PRIMARY KEY (idAlert)
             |)""".stripMargin) 
 
       println(s"Create table tranquilly.personne ...")
       session.execute(s"""CREATE TABLE IF NOT EXISTS $personneTable (
             |  idPersonne TEXT,
-            |  token Text,
+            |  tokenId TEXT,
             |  typePersonne TEXT,
             |  user_name TEXT,
             |  idFamily TEXT,
-            |  family_list LIST,
+            |  family_list list<TEXT>,
             |
             |  PRIMARY KEY (idPersonne)
 

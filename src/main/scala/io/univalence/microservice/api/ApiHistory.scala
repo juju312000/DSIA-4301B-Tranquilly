@@ -66,7 +66,7 @@ object ApiHistory {
         val personne = personneRepository.findFromToken(token)
         val enfants = personne.family_list
 
-        val alerts: List[AlertPersonne] = alertRepository.findHistory(start,stop,count,enfants).toList
+        val alerts: List[AlertGet] = alertRepository.findHistory(start,stop,count,enfants).toList
         val doc                          = AlertGetJson.gson.toJson(alerts.asJava)
 
         response.`type`("application/json")

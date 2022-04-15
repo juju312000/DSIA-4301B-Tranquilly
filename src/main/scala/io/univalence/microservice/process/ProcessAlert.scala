@@ -5,6 +5,8 @@ import io.univalence.microservice.common._
 import org.apache.kafka.clients.consumer.{ConsumerConfig, ConsumerRecord, ConsumerRecords, KafkaConsumer}
 import org.apache.kafka.common.serialization.StringDeserializer
 
+import java.time.Instant
+
 object ProcessAlert {
 
   import scala.jdk.CollectionConverters._
@@ -52,7 +54,7 @@ object ProcessAlert {
           val alertPersonne = aggregateWithPersonne(alert, personne)
           // Envoi de la notif
 
-          sendNotif(alertPersonne/*,httpClient*/)
+          //sendNotif(alertPersonne/*,httpClient*/)
 
           alertPersonne
         }
@@ -61,7 +63,7 @@ object ProcessAlert {
     }
   }
 
-  def sendNotif(alertPersonne : AlertPersonne/*, client: OkHttpClient*/): Unit = {
+  /*def sendNotif(alertPersonne : AlertPersonne/*, client: OkHttpClient*/): Unit = {
       // On récupère l'id personne
       val from_id = alertPersonne.user_id
 
@@ -70,29 +72,28 @@ object ProcessAlert {
       (from_id)
 
       // Pour chaque parent on ajoute à AlertPersonne et on envoie
-    //for(int i = 0; i<idsParents.size;i++){}
-      for (String parent: idsParents) {
+      for (parent <- idsParents) {
         val alertService = AlertService(
-          to_id = parent.user_id,
-          to_name = parent.user_id,
+          to_id = parent,
           from_name = alertPersonne.user_name,
           from_id = alertPersonne.user_id,
           timestamp = alertPersonne.timestamp,
           server_timestamp = Instant.now().toEpochMilli,
-          reason = alertPersonne.reason
+          reason = alertPersonne.reason,
+          coordinates = alertPersonne.coordinates
         )
         sendDoc(
                 AlertServiceJson.serialize(alertService),
-                s"http://adresse.com/alert/notify",
-                client
+                s"http://adresse.com/alert/notify"/*,
+                client*/
         )
       }
 
       
 
-  }
+  }*/
 
-  def sendDoc(doc: String, url: String, client: OkHttpClient): Unit = {
+  /*def sendDoc(doc: String, url: String, client: OkHttpClient): Unit = {
     println(s"Sending to $url: $doc")
 
     val body = RequestBody.create(doc, MediaType.parse("application/json"))
@@ -110,7 +111,7 @@ object ProcessAlert {
         )
       }
     }.get
-  }
+  }*/
 
   def aggregateWithPersonne(
       alertToken: AlertIngestToken,

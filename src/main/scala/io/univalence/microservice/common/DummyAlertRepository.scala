@@ -1,6 +1,6 @@
 package io.univalence.microservice.common
 
-class DummyAlertRepository extends AlertRepository {
+/*class DummyAlertRepository extends AlertRepository {
 
   override def findAll(): Iterator[AlertPersonne] = Iterator.empty
 
@@ -10,7 +10,7 @@ class DummyAlertRepository extends AlertRepository {
 
   override def saveAll(stocks: List[AlertPersonne]): Unit = ()
 
-}
+}*/
 
 
 // A quoi ca sert ?
