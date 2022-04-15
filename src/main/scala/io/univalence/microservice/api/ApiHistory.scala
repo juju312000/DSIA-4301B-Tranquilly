@@ -30,12 +30,12 @@ object ApiHistory {
         val stop : Long= request.params("stop").toLong
         val count : Int = request.params("count").toInt
 
-        // Récupère le token
-        //val token : request.headers("Authorization")// à modifier si non fonctionnel
+        // Récupère le tokenId
+        //val tokenId : request.headers("Authorization")// à modifier si non fonctionnel
         //personneRepository.findFromToken()
 
         // Récupère ids des enfants
-        //val personne = personneRepository.findFromToken(token)
+        //val personne = personneRepository.findFromToken(tokenId)
         //val enfants = personne.family_list
         val idsEnfants : Long = 2
 
@@ -53,8 +53,8 @@ object ApiHistory {
       (request: Request, response: Response) => {
         println(s"--> Requested to find message")
         
-        // Récupère le token
-        //val token : request.headers("Authorization")// à modifier si non fonctionnel
+        // Récupère le tokenId
+        //val tokenId : request.headers("Authorization")// à modifier si non fonctionnel
         //personneRepository.findFromToken()
 
         // Récupère ids des enfants
@@ -62,8 +62,8 @@ object ApiHistory {
         val stop : Long= request.params("stop").toLong
         val count : Int = request.params("count").toInt
 
-        val token : String = null
-        val personne = personneRepository.findFromToken(token)
+        val tokenId : String = null
+        val personne = personneRepository.findFromToken(tokenId)
         val enfants = personne.family_list
 
         val alerts: List[AlertPersonne] = alertRepository.findHistory(start,stop,count,enfants).toList

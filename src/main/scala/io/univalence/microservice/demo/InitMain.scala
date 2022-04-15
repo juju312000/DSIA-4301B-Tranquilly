@@ -63,7 +63,7 @@ object InitMain {
       println(s"Create table tranquilly.personne ...")
       session.execute(s"""CREATE TABLE IF NOT EXISTS $personneTable (
             |  idPersonne TEXT,
-            |  token Text,
+            |  tokenId Text,
             |  typePersonne TEXT,
             |  user_name TEXT,
             |  idFamily TEXT,

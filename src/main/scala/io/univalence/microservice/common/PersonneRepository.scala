@@ -5,7 +5,7 @@ package io.univalence.microservice.common
  */
 trait PersonneRepository {
 
-  def findFromToken(token : String): Personne
+  def findFromToken(tokenId : String): Personne
 
   def findIdFamily(idPersonne: String): String
 

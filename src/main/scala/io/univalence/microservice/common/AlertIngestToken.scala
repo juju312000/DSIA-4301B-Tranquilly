@@ -2,7 +2,7 @@ package io.univalence.microservice.common
 
 import com.google.gson.Gson
 
-case class AlertIngestToken(token: String, timestamp: Long, reason: String,coordinates : List[Double])
+case class AlertIngestToken(tokenId: String, timestamp: Long, reason: String,coordinates : List[Double])
 object AlertIngestTokenJson {
   val gson = new Gson()
 

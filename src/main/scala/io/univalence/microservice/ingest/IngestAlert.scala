@@ -32,14 +32,14 @@ object IngestAlert {
         val body      = request.body()
         val timestamp = Instant.now().toEpochMilli
 
-        val token = null // Extract token here
+        val tokenId = null // Extract tokenId here
         println(s"--> Received@$timestamp: data: $body")
 
         val alert = AlertIngestJson.deserialize(body)
         println(s"Deserialized data: $alert")
 
 
-        val alertToken = alertToAlertToken(alert,token)
+        val alertToken = alertToAlertToken(alert,tokenId)
 
         sendAlert(alertToken, producer)
 
@@ -50,11 +50,11 @@ object IngestAlert {
 
   }
 
-  //Permet d'ajouter le token utilisateur
-  def alertToAlertToken(alert : AlertIngest, token : String):
+  //Permet d'ajouter le tokenId utilisateur
+  def alertToAlertToken(alert : AlertIngest, tokenId : String):
     AlertIngestToken = {
       AlertIngestToken(
-        token = token,
+        tokenId = tokenId,
         coordinates = alert.coordinates,
         timestamp = alert.timestamp,
         reason = alert.reason

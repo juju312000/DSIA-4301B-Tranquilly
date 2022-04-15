@@ -25,17 +25,17 @@ object ApiTrack {
       (request: Request, response: Response) => {
         println(s"--> Requested to find alert")
         
-        // Récupère le token
-        //val token : request.headers("Authorization")// à modifier si non fonctionnel
+        // Récupère le tokenId
+        //val tokenId : request.headers("Authorization")// à modifier si non fonctionnel
         //personneRepository.findFromToken()
 
         // Récupère ids des enfants
-        //val personne =personneRepository.findFromToken(token)
+        //val personne =personneRepository.findFromToken(tokenId)
         //val enfants = personne.family_list
 
         //  request.headers("Authorization")// à modifier si non fonctionnel
-        val token : String = null
-        val parent : Personne =  personneRepository.findFromToken(token)
+        val tokenId : String = null
+        val parent : Personne =  personneRepository.findFromToken(tokenId)
         val idEnfant : String = request.params("id").toString
 
         if (parent.family_list.contains(idEnfant)) {

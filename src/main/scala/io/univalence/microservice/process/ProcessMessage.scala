@@ -37,13 +37,13 @@ object ProcessMessage {
       // Récupère depuis Kafka
       val messageToken: List[MessageIngestToken] = nextMessageToken(consumer)
 
-      // Regarde dans la db si le produit existe (ici on veut récupérer les personnes depuis le token)
+      // Regarde dans la db si le produit existe (ici on veut récupérer les personnes depuis le tokenId)
 
       val newMessages: List[MessagePersonne] =
         messageToken.map { message =>
           val personne =
             personneRepository
-              .findFromToken(message.token)
+              .findFromToken(message.tokenId)
               //.getOrElse(// drop ?)
 
           aggregateWithPersonne(message, personne)

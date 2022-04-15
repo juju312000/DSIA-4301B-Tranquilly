@@ -40,13 +40,13 @@ object ProcessAlert {
       // Récupère depuis Kafka
       val alertToken: List[AlertIngestToken] = nextAlertToken(consumer)
 
-      // Regarde dans la db si le produit existe (ici on veut récupérer les personnes depuis le token)
+      // Regarde dans la db si le produit existe (ici on veut récupérer les personnes depuis le tokenId)
 
       val newAlerts: List[AlertPersonne] =
         alertToken.map { alert =>
           val personne =
             personneRepository
-              .findFromToken(alert.token)
+              .findFromToken(alert.tokenId)
               //.getOrElse(// drop ?)
 
           val alertPersonne = aggregateWithPersonne(alert, personne)

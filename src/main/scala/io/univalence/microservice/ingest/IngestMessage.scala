@@ -33,13 +33,13 @@ object IngestMessage {
         val timestamp = Instant.now().toEpochMilli
         println(s"--> Received@$timestamp: data: $body")
 
-        // Extract token
-        val token = null
+        // Extract tokenId
+        val tokenId = null
 
         val messageVar = MessageIngestJson.deserialize(body)
         println(s"Deserialized data: $messageVar")
 
-        val messageToken = messageToMessageToken(messageVar,token)
+        val messageToken = messageToMessageToken(messageVar,tokenId)
         sendMessage(messageToken, producer)
 
         "ok"
@@ -48,11 +48,11 @@ object IngestMessage {
 
   }
 
- //Permet d'ajouter le token utilisateur
-  def messageToMessageToken(messageVar : MessageIngest, token : String):
+ //Permet d'ajouter le tokenId utilisateur
+  def messageToMessageToken(messageVar : MessageIngest, tokenId : String):
     MessageIngestToken = {
       MessageIngestToken(
-        token = token,
+        tokenId = tokenId,
         coordinates = messageVar.coordinates,
         timestamp = messageVar.timestamp,
         message = messageVar.message
