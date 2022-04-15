@@ -9,4 +9,6 @@ trait MessageRepository {
 
   def save(message: Message): Unit
 
+  def saveAll(messages: List[Message]): Unit
+
 }

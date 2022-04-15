@@ -15,7 +15,7 @@ class CassandraAlertRepository(session: CqlSession)
   // Pas sur du type Array
   // Prend les ids des enfant, les dates limites et le nombre maximum à récupérer
   // Appel depuis history/alert
-  override def findHistory(start: Long, end: Long, count: Int, idsEnfants: Long): Iterator[AlertGet] = {
+  override def findHistory(start: Long, end: Long, count: Int, idsEnfants: List[String]): Iterator[AlertGet] = {
     val statement =
       session.prepare("SELECT * FROM tranquilly.alert WHERE reason in ('ZONEOUT','REDBUTTON','PHONEOFF') AND timestamp BETWEEN(?,?) AND idEnfant in ? LIMIT ?")
     val result: List[Row] =
@@ -31,8 +31,7 @@ class CassandraAlertRepository(session: CqlSession)
           coordinates = result.getList("coordinates", classOf[Double]).asScala.toList,
           server_timestamp = Instant.now().toEpochMilli
         )
-      )
-      .iterator
+      ).iterator
   }
 
   override def save(alert: AlertPersonne): Unit = {
@@ -50,7 +49,7 @@ class CassandraAlertRepository(session: CqlSession)
 
 // Pas sûr du type Array
   // Appel depuis TRACK API
-  override def findLastPosition(idEnfant: String): Option[AlertGet] = {
+  override def findLastPosition(idEnfant: String): AlertPersonne = {
     val statement =
       session.prepare("SELECT * FROM tranquilly.alert WHERE reason = 'TRACKING' AND idEnfant == ? ORDER BY timestamp DESC LIMIT 1")
       // Permet de récupérer la dernière position d'un enfant
@@ -59,13 +58,12 @@ class CassandraAlertRepository(session: CqlSession)
 
     result
       .map(result =>
-        AlertGet(
-          idEnfant = result.getString("idEnfant"),
+        AlertPersonne(
+          user_id = result.getString("user_id"),
+          user_name = result.getString("user_name"),
           reason = result.getString("reason"),
           timestamp = result.getLong("ts"),
-          user_name = result.getString("user_name"),
           coordinates = result.getList("coordinates", classOf[Double]).asScala.toList,
-          server_timestamp = Instant.now().toEpochMilli
         )
       ).get
   }

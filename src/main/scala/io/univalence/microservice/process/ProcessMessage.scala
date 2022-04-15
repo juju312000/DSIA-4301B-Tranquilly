@@ -35,7 +35,7 @@ object ProcessMessage {
 
     while (true) {
       // Récupère depuis Kafka
-      val messageToken: List[MessageIngestToken] = nexMessageToken(consumer)
+      val messageToken: List[MessageIngestToken] = nextMessageToken(consumer)
 
       // Regarde dans la db si le produit existe (ici on veut récupérer les personnes depuis le token)
 

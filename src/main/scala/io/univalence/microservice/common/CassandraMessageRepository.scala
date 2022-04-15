@@ -3,6 +3,7 @@ package io.univalence.microservice.common
 import com.datastax.oss.driver.api.core.CqlSession
 import com.datastax.oss.driver.api.core.cql.{BatchStatement, BatchType, Row}
 
+import java.time.Instant
 import java.util
 
 class CassandraMessageRepository(session: CqlSession)

@@ -23,7 +23,7 @@ class CassandraPersonneRepository(session: CqlSession)
       ).toList
   }
 
-  override def findFromToken(token: String): Option[Personne] = {
+  override def findFromToken(token: String): Personne = {
     val statement =
       session.prepare("SELECT * FROM tranquily.personne WHERE token = ?")
     val result: Option[Row] = Option(session.execute(statement.bind(token)).one())

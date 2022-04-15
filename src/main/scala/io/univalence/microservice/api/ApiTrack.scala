@@ -34,17 +34,17 @@ object ApiTrack {
         //val enfants = personne.family_list
 
         //  request.headers("Authorization")// à modifier si non fonctionnel
-        val token : String = NULL
+        val token : String = null
         val parent : Personne =  personneRepository.findFromToken(token)
         val idEnfant : String = request.params("id").toString
 
-        if (parent.listFamily contains idEnfant) {
-          println(s"Personne #$id not in child List")
+        if (parent.family_list.contains(idEnfant)) {
+          println(s"Personne $idEnfant not in child List")
           response.status(404)
-          s"Personne #$id not in child List"
+          s"Personne #$idEnfant not in child List"
         } else {
-          val stocks: AlertGet = alertRepository.findLastPosition(idEnfant)
-          val doc                         = AlertGetJson.gson.toJson(stocks.asJava)
+          val track: AlertPersonne = alertRepository.findLastPosition(idEnfant)
+          val doc                         = AlertGetJson.gson.toJson(track)
           response.`type`("application/json")
           doc
         }

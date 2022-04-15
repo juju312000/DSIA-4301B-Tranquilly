@@ -9,19 +9,18 @@ object ProcessAlert {
 
   import scala.jdk.CollectionConverters._
 
+  // TODO instantiate a stock repository from a Cassandra session
+  val session = CqlSession.builder().build()
+
+  val alertRepository: AlertRepository = new CassandraAlertRepository(session)
+  val personneRepository: PersonneRepository = new CassandraPersonneRepository(session)
+
+
+
   def main(args: Array[String]): Unit = {
 
-    // TODO instantiate a stock repository from a Cassandra session
+    //val httpClient = new OkHttpClient.Builder().build()
 
-    val session = CqlSession.builder().build()
-
-    val alertRepository: AlertRepository = new CassandraAlertRepository(session)
-    val personneRepository: PersonneRepository = new CassandraPersonneRepository(session)
-
-
-    val httpClient = new OkHttpClient.Builder().build()
-
-    
     // TODO create a consumer and subscribe to Kafka topic
 
     val consumer =
@@ -53,7 +52,7 @@ object ProcessAlert {
           val alertPersonne = aggregateWithPersonne(alert, personne)
           // Envoi de la notif
 
-          sendNotif(alertPersonne,httpClient)
+          sendNotif(alertPersonne/*,httpClient*/)
 
           alertPersonne
         }
@@ -62,17 +61,17 @@ object ProcessAlert {
     }
   }
 
-  def sendNotif(alertPersonne : AlertPersonne, client: OkHttpClient): Unit = {
+  def sendNotif(alertPersonne : AlertPersonne/*, client: OkHttpClient*/): Unit = {
       // On récupère l'id personne
       val from_id = alertPersonne.user_id
 
       // On récupère la liste des autres membres de la famille (les parents)
-      val idsParents :List[String] = CassandraPersonneRepository.findListIdFamily(from_id)
+      val idsParents :List[String] = personneRepository.findListIdFamily(from_id)
       (from_id)
 
       // Pour chaque parent on ajoute à AlertPersonne et on envoie
-
-      for (parent <- parents) {
+    //for(int i = 0; i<idsParents.size;i++){}
+      for (String parent: idsParents) {
         val alertService = AlertService(
           to_id = parent.user_id,
           to_name = parent.user_id,
@@ -86,7 +85,7 @@ object ProcessAlert {
                 AlertServiceJson.serialize(alertService),
                 s"http://adresse.com/alert/notify",
                 client
-              )
+        )
       }
 
       
