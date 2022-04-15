@@ -5,6 +5,8 @@ import io.univalence.microservice.common._
 import org.apache.kafka.clients.consumer.{ConsumerConfig, ConsumerRecord, ConsumerRecords, KafkaConsumer}
 import org.apache.kafka.common.serialization.StringDeserializer
 
+import java.time.Instant
+
 object ProcessMessage {
 
   import scala.jdk.CollectionConverters._
@@ -39,7 +41,7 @@ object ProcessMessage {
 
       // Regarde dans la db si le produit existe (ici on veut récupérer les personnes depuis le tokenId)
 
-      val newMessages: List[MessagePersonne] =
+      val newMessages: List[Message] =
         messageToken.map { message =>
           val personne =
             personneRepository
@@ -58,14 +60,14 @@ object ProcessMessage {
   def aggregateWithPersonne(
       messageToken: MessageIngestToken,
       personne: Personne
-  ): MessagePersonne = {
-
-    MessagePersonne(
-        user_id = personne.idPersonne,
+  ): Message = {
+    Message(
+        idPersonne = personne.idPersonne,
         user_name = personne.user_name,
         timestamp = messageToken.timestamp,
         message = messageToken.message,
-        coordinates = messageToken.coordinates
+        coordinates = messageToken.coordinates,
+        server_timestamp = Instant.now().toEpochMilli
       )
   }
 

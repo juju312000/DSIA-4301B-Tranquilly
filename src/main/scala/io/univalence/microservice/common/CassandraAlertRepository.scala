@@ -6,11 +6,11 @@ import com.datastax.oss.driver.api.core.cql.{BatchStatement, BatchType, Row}
 import java.time.Instant
 import java.util
 
+
 class CassandraAlertRepository(session: CqlSession)
     extends AlertRepository {
 
-  import scala.jdk.CollectionConverters._
-
+    import scala.jdk.CollectionConverters._
   
   // Pas sur du type Array
   // Prend les ids des enfant, les dates limites et le nombre maximum à récupérer
