@@ -9,7 +9,7 @@ trait AlertRepository {
 
   def save(alert: AlertPersonne): Unit
 
-  def findLastPosition(idEnfant: String): AlertPersonne
+  def findLastPosition(idEnfant: String): Option[AlertPersonne]
 
   def saveAll(alert: List[AlertPersonne]): Unit
 

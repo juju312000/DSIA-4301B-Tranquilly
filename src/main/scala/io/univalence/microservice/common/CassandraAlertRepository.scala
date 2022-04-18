@@ -49,7 +49,7 @@ class CassandraAlertRepository(session: CqlSession)
 
 // Pas sûr du type Array
   // Appel depuis TRACK API
-  override def findLastPosition(idEnfant: String): AlertPersonne = {
+  override def findLastPosition(idEnfant: String): Option[AlertPersonne] = {
     val statement =
       session.prepare("SELECT * FROM tranquilly.alert WHERE reason = 'TRACKING' AND idEnfant == ? ORDER BY timestamp DESC LIMIT 1")
       // Permet de récupérer la dernière position d'un enfant

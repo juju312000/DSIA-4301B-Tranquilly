@@ -38,26 +38,24 @@ object InitMain {
 
       println(s"Create table tranquilly.message ...")
       session.execute(s"""CREATE TABLE IF NOT EXISTS $messageTable (
-            |  idMessage TEXT,
             |  timestamp BIGINT,
             |  message TEXT,
             |  idPersonne TEXT,
             |  user_name TEXT,
             |  coordinates list<DOUBLE>,
             |
-            |  PRIMARY KEY (idMessage)
+            |  PRIMARY KEY (idPersonne,timestamp)
             |)""".stripMargin)
 
       println(s"Create table tranquilly.alert ...")
       session.execute(s"""CREATE TABLE IF NOT EXISTS $alertTable (
-            |  idAlert TEXT,
             |  timestamp BIGINT,
             |  reason TEXT,
             |  idEnfant TEXT,
             |  user_name TEXT,
             |  coordinates list<DOUBLE>,
             |
-            |  PRIMARY KEY (idAlert)
+            |  PRIMARY KEY (idEnfant,timestamp)
             |)""".stripMargin) 
 
       println(s"Create table tranquilly.personne ...")
@@ -72,6 +70,7 @@ object InitMain {
             |  PRIMARY KEY (idPersonne)
 
             |)""".stripMargin)    
+            // On pourait créer une table juste pour associer token et id
 
       println(s"Insert personne ...")
       session.execute(s"""INSERT INTO tranquilly.personne VALUES (1,Ey4Ip6JBGp,"parent","parent_1",1,[3,4])""".stripMargin)    
